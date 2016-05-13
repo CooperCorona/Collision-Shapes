@@ -90,6 +90,19 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
         }
     }
     
+    public func overlapWith(rect:CollisionRectangle) -> CollisionRectangle? {
+        guard self.collidesWith(rect) else {
+            return nil
+        }
+        let minX = max(self.minX, rect.minX)
+        let maxX = min(self.maxX, rect.maxX)
+        let minY = max(self.minY, rect.minY)
+        let maxY = min(self.maxY, rect.maxY)
+        let deltaX = maxX - minX
+        let deltaY = maxY - minY
+        return CollisionRectangle(center: CGPoint(x: minX + deltaX / 2.0, y: minY + deltaY / 2.0), size: CGSize(width: deltaX, height: deltaY))
+    }
+    
     // MARK: - Collision
     
     public func collidesWith(rect:CollisionRectangle) -> Bool {
