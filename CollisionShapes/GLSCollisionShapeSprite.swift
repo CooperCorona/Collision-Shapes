@@ -24,7 +24,7 @@ class GLSCollisionShapeSprite: GLSSprite {
     init(shape:GLCollisionShape) {
         self.shape = shape
         
-        let frame = shape.frame
+        let frame = CGRect(points: shape.points)
         super.init(position: frame.center, size: frame.size, texture: CCTextureOrganizer.textureForString("White Tile"))
         
         self.regenerateVertices()
@@ -33,7 +33,7 @@ class GLSCollisionShapeSprite: GLSSprite {
     // MARK: - Logic
     
     func regenerateVertices() {
-        let frame   = self.shape.frame
+        let frame = CGRect(points: self.shape.points)
         let points  = self.getPointsFromShape(self.shape)
         
         self.contentSize = frame.size

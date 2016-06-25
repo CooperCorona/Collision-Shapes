@@ -13,7 +13,7 @@ public struct GraphicsState {
     
     public var contentSize          = CGSize.zero
     public var position             = CGPoint.zero
-    public var anchor               = CGPoint.zero
+    public var anchor               = CGPoint(xy: 0.5)
     public var rotation:CGFloat     = 0.0
     public var xScale:CGFloat       = 1.0
     public var yScale:CGFloat       = 1.0
@@ -24,6 +24,14 @@ public struct GraphicsState {
         set {
             self.xScale = newValue
             self.yScale = newValue
+        }
+    }
+    public var center:CGPoint {
+        get {
+            return self.position - (self.anchor - 0.5) * self.contentSize
+        }
+        set {
+            self.position = newValue + (self.anchor - 0.5) * self.contentSize
         }
     }
     
@@ -78,6 +86,11 @@ extension GraphicsStateProtocol {
     public var scale:CGFloat {
         get { return self.graphicsState.scale }
         set { self.graphicsState.scale = newValue }
+    }
+    
+    public var center:CGPoint {
+        get { return self.graphicsState.center }
+        set { self.graphicsState.center = newValue }
     }
 }
 

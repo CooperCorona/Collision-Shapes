@@ -22,10 +22,10 @@ public struct CollisionLineSegment: CollisionShape, CustomStringConvertible {
     // MARK: - Setup
     
     public init(firstPoint:CGPoint, secondPoint:CGPoint) {
-        let minX = min(firstPoint.x, secondPoint.x)
-        let minY = min(firstPoint.y, secondPoint.y)
-        let minimum = CGPoint(x: minX, y: minY)
-        self.segment = LineSegment(first: firstPoint - minimum, second: secondPoint - minimum)
+        let frame = CGRect(points: [firstPoint, secondPoint])
+        self.segment = LineSegment(first: firstPoint - frame.origin, second: secondPoint - frame.origin)
+        self.graphicsState.position = frame.origin
+        self.graphicsState.contentSize = frame.size
     }
     
     public init(x1:CGFloat, y1:CGFloat, x2:CGFloat, y2:CGFloat) {

@@ -56,7 +56,14 @@ public struct LineSegment {
     }
     
     public static func linesBetweenPoints(points:[CGPoint]) -> [LineSegment] {
-        return points.enumerateSkipLast().map() { (i, p) in LineSegment(first: p, second: points[i + 1]) }
+        var lines:[LineSegment] = []
+        for (i, p) in points.enumerateSkipLast() {
+            lines.append(LineSegment(first: p, second: points[i + 1]))
+        }
+        if let first = points.first, last = points.last where !(first ~= last) {
+            lines.append(LineSegment(first: first, second: last))
+        }
+        return lines
     }
     
     // MARK: - Logic

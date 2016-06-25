@@ -111,10 +111,4 @@ extension CollisionShape {
         return LineSegment(first: inverseMatrix * (selfMatrix * line.firstPoint), second: inverseMatrix * (selfMatrix * line.secondPoint))
     }
     
-    private func getTransformedLineSegments(selfMatrix:SCMatrix4, inverseMatrix:SCMatrix4) -> [CollisionLineSegment] {
-        return self.lines.map() {
-            return CollisionLineSegment(firstPoint: inverseMatrix * (selfMatrix * $0.firstPoint), secondPoint: inverseMatrix * (selfMatrix * $0.secondPoint))
-        }
-    }
-    
 }
