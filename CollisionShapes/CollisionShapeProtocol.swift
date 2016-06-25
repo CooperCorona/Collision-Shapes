@@ -2,8 +2,9 @@ import UIKit
 import OmniSwift
 
 public enum CollisionBoxType {
-    case HitBox
-    case HurtBox
+    case Hit
+    case Hurt
+    case Both
 }
 
 public protocol CollisionShape: GraphicsStateProtocol {
@@ -12,7 +13,6 @@ public protocol CollisionShape: GraphicsStateProtocol {
     var boxType:CollisionBoxType { get }
     
     var points:[CGPoint] { get }
-    var lines:[CollisionLineSegment] { get }
     
     func pointLiesInside(_: CGPoint) -> Bool
     
@@ -66,16 +66,18 @@ extension CollisionShape {
             }
         }
         
-        for line in self.lines.map({ self.transformLine($0, by: t1, and: i2) }) {
-            for sLine in shape.lines {
+        let selfLines  = LineSegment.linesBetweenPoints(self.points)
+        let shapeLines = LineSegment.linesBetweenPoints(shape.points)
+        for line in selfLines.map({ self.transformLine($0, by: t1, and: i2) }) {
+            for sLine in shapeLines {
                 if line.collidesWith(sLine) {
                     return (self, shape)
                 }
             }
         }
         
-        for sLine in shape.lines.map({ self.transformLine($0, by: t2, and: i1) }) {
-            for line in self.lines {
+        for sLine in shapeLines.map({ self.transformLine($0, by: t2, and: i1) }) {
+            for line in selfLines {
                 if sLine.collidesWith(line) {
                     return (self, shape)
                 }
@@ -105,8 +107,8 @@ extension CollisionShape {
         return nil
     }
     
-    private func transformLine(line:CollisionLineSegment, by selfMatrix:SCMatrix4, and inverseMatrix:SCMatrix4) -> CollisionLineSegment {
-        return CollisionLineSegment(firstPoint: inverseMatrix * (selfMatrix * line.firstPoint), secondPoint: inverseMatrix * (selfMatrix * line.secondPoint))
+    private func transformLine(line:LineSegment, by selfMatrix:SCMatrix4, and inverseMatrix:SCMatrix4) -> LineSegment {
+        return LineSegment(first: inverseMatrix * (selfMatrix * line.firstPoint), second: inverseMatrix * (selfMatrix * line.secondPoint))
     }
     
     private func getTransformedLineSegments(selfMatrix:SCMatrix4, inverseMatrix:SCMatrix4) -> [CollisionLineSegment] {

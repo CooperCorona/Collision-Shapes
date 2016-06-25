@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC0302331D1EFD7700EB6A6C /* GraphicsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */; };
+		DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302341D1F1EC700EB6A6C /* LineSegment.swift */; };
 		DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113901BB7487A00887A5C /* CollisionShapes.framework */; };
 		DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */; };
 		DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsState.swift; sourceTree = "<group>"; };
+		DC0302341D1F1EC700EB6A6C /* LineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegment.swift; sourceTree = "<group>"; };
 		DC8113901BB7487A00887A5C /* CollisionShapes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollisionShapes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8113951BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollisionShapesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 				DC8113C41BB7500400887A5C /* GLCollisionShape.swift */,
 				DC8113C61BB7504E00887A5C /* GLSCollisionShapeSprite.swift */,
 				DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */,
+				DC0302341D1F1EC700EB6A6C /* LineSegment.swift */,
 				DC8113951BB7487A00887A5C /* Info.plist */,
 			);
 			path = CollisionShapes;
@@ -309,6 +312,7 @@
 				DCA034031BB8653300298461 /* CollisionView.swift in Sources */,
 				DC8113C51BB7500400887A5C /* GLCollisionShape.swift in Sources */,
 				DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */,
+				DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */,
 				DC8113C71BB7504E00887A5C /* GLSCollisionShapeSprite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
