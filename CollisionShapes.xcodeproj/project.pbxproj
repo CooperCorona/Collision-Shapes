@@ -17,8 +17,6 @@
 		DC8113B21BB7488F00887A5C /* CollisionShapeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */; };
 		DC8113B31BB7488F00887A5C /* CollisionTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */; };
 		DC8113C31BB74C4500887A5C /* OmniSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113BC1BB74C3800887A5C /* OmniSwift.framework */; };
-		DC8113C51BB7500400887A5C /* GLCollisionShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113C41BB7500400887A5C /* GLCollisionShape.swift */; };
-		DC8113C71BB7504E00887A5C /* GLSCollisionShapeSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113C61BB7504E00887A5C /* GLSCollisionShapeSprite.swift */; };
 		DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,8 +72,6 @@
 		DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionShapeProtocol.swift; sourceTree = "<group>"; };
 		DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionTriangle.swift; sourceTree = "<group>"; };
 		DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OmniSwift.xcodeproj; path = ../OmniSwift/OmniSwift.xcodeproj; sourceTree = "<group>"; };
-		DC8113C41BB7500400887A5C /* GLCollisionShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLCollisionShape.swift; sourceTree = "<group>"; };
-		DC8113C61BB7504E00887A5C /* GLSCollisionShapeSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLSCollisionShapeSprite.swift; sourceTree = "<group>"; };
 		DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollisionRectangle+Positioning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,8 +123,6 @@
 				DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */,
 				DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */,
 				DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */,
-				DC8113C41BB7500400887A5C /* GLCollisionShape.swift */,
-				DC8113C61BB7504E00887A5C /* GLSCollisionShapeSprite.swift */,
 				DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */,
 				DC0302341D1F1EC700EB6A6C /* LineSegment.swift */,
 				DC8113951BB7487A00887A5C /* Info.plist */,
@@ -306,10 +300,8 @@
 				DC8113B11BB7488F00887A5C /* CollisionRectangle.swift in Sources */,
 				DC8113B21BB7488F00887A5C /* CollisionShapeProtocol.swift in Sources */,
 				DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */,
-				DC8113C51BB7500400887A5C /* GLCollisionShape.swift in Sources */,
 				DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */,
 				DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */,
-				DC8113C71BB7504E00887A5C /* GLSCollisionShapeSprite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
