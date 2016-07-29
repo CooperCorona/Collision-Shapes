@@ -9,7 +9,6 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
     
     // MARK: - CollisionShape Properties
     
-    public var centerOfParent = CGPoint.zero
     public var children:[CollisionShape] = []
     public var boxType = CollisionBoxType.Both
     

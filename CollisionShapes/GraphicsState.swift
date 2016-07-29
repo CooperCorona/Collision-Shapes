@@ -35,6 +35,14 @@ public struct GraphicsState {
         }
     }
     
+    public var frame:CGRect {
+        get { return CGRect(center: self.center, size: self.contentSize) }
+        set {
+            self.center = newValue.center
+            self.contentSize = newValue.size
+        }
+    }
+    
     public func modelMatrix(renderingSelf:Bool = true) -> SCMatrix4 {
         if renderingSelf {
             return SCMatrix4(translation: self.position, rotation: self.rotation, scaleX: self.xScale, scaleY: self.yScale, anchor: self.anchor, size: self.contentSize)
