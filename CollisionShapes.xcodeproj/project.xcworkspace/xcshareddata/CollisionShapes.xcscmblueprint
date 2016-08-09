@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A760111D90904809446FCCAA6A56FCFF07F6888E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AB6D654632EA0247DF9384A35319AE413E860B02" : 0,
+    "A760111D90904809446FCCAA6A56FCFF07F6888E" : 0,
+    "BE4D2D50881A2E62C3A41DC9B288DEE482092ED3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6FBE41BF-87E0-4BC4-8514-820FBE69B263",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AB6D654632EA0247DF9384A35319AE413E860B02" : "OmniSwift\/",
+    "A760111D90904809446FCCAA6A56FCFF07F6888E" : "CollisionShapes\/",
+    "BE4D2D50881A2E62C3A41DC9B288DEE482092ED3" : "Gravity\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CollisionShapes",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CollisionShapes.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CooperCorona\/Collision-Shapes.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A760111D90904809446FCCAA6A56FCFF07F6888E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CooperCorona\/OmniSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AB6D654632EA0247DF9384A35319AE413E860B02"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CooperCorona\/Gravity.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE4D2D50881A2E62C3A41DC9B288DEE482092ED3"
+    }
+  ]
+}

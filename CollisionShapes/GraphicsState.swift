@@ -43,6 +43,19 @@ public struct GraphicsState {
         }
     }
     
+    public init() {
+        
+    }
+    
+    public init(contentSize:CGSize, position:CGPoint, anchor:CGPoint, rotation:CGFloat, xScale:CGFloat, yScale:CGFloat) {
+        self.contentSize = contentSize
+        self.position = position
+        self.anchor = anchor
+        self.rotation = rotation
+        self.xScale = xScale
+        self.yScale = yScale
+    }
+    
     public func modelMatrix(renderingSelf:Bool = true) -> SCMatrix4 {
         if renderingSelf {
             return SCMatrix4(translation: self.position, rotation: self.rotation, scaleX: self.xScale, scaleY: self.yScale, anchor: self.anchor, size: self.contentSize)
@@ -104,7 +117,7 @@ extension GraphicsStateProtocol {
 
 extension GLSNode {
     
-    var graphicsState:GraphicsState {
+    public var graphicsState:GraphicsState {
         get {
             return GraphicsState(contentSize: self.contentSize, position: self.position, anchor: self.anchor, rotation: self.rotation, xScale: self.scaleX, yScale: self.scaleY)
         }

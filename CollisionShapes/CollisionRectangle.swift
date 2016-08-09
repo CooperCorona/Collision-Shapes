@@ -40,5 +40,5 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
         return 0.0 <= point.x && point.x <= self.contentSize.width
             && 0.0 <= point.y && point.y <= self.contentSize.height
     }
-    
+        
 }

@@ -17,6 +17,7 @@
 		DC8113B21BB7488F00887A5C /* CollisionShapeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */; };
 		DC8113B31BB7488F00887A5C /* CollisionTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */; };
 		DC8113C31BB74C4500887A5C /* OmniSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113BC1BB74C3800887A5C /* OmniSwift.framework */; };
+		DCA9EE081D54265A0042A4DD /* CollisionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */; };
 		DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionShapeProtocol.swift; sourceTree = "<group>"; };
 		DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionTriangle.swift; sourceTree = "<group>"; };
 		DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OmniSwift.xcodeproj; path = ../OmniSwift/OmniSwift.xcodeproj; sourceTree = "<group>"; };
+		DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionGroup.swift; sourceTree = "<group>"; };
 		DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollisionRectangle+Positioning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */,
+				DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */,
 				DC8113AB1BB7488F00887A5C /* CollisionLineSegment.swift */,
 				DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */,
 				DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */,
@@ -299,6 +302,7 @@
 				DC8113B31BB7488F00887A5C /* CollisionTriangle.swift in Sources */,
 				DC8113B11BB7488F00887A5C /* CollisionRectangle.swift in Sources */,
 				DC8113B21BB7488F00887A5C /* CollisionShapeProtocol.swift in Sources */,
+				DCA9EE081D54265A0042A4DD /* CollisionGroup.swift in Sources */,
 				DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */,
 				DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */,
 				DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */,
