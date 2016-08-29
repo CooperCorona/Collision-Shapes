@@ -5,9 +5,9 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     
     // MARK: - Properties
     
-    public var graphicsState = GraphicsState() {
+    public var transform = Transform() {
         didSet {
-            if !(self.graphicsState.contentSize ~= oldValue.contentSize) {
+            if !(self.transform.contentSize ~= oldValue.contentSize) {
                 self.regeneratePoints()
             }
         }

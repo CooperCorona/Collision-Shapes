@@ -20,7 +20,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
 
     public typealias Element = CollisionShape
     
-    public var graphicsState = GraphicsState()
+    public var transform = Transform()
     public var children:[CollisionShape] = [] {
         didSet {
             self.axisAlignedCollisionFrame = self.calculateCollisionFrame()
@@ -33,7 +33,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
     public var log = false
     private var axisAlignedCollisionFrame = CGRect.zero
     public var collisionFrame:CGRect {
-        let matrix = self.graphicsState.modelMatrix()
+        let matrix = self.transform.modelMatrix()
         let points = [
             self.axisAlignedCollisionFrame.bottomLeftGL,
             self.axisAlignedCollisionFrame.bottomRightGL,
@@ -81,7 +81,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
         guard var firstPoint = firstChild.points.first else {
             return CGRect.zero
         }
-        firstPoint = firstChild.graphicsState.modelMatrix() * firstPoint
+        firstPoint = firstChild.transform.modelMatrix() * firstPoint
         var minX:CGFloat = firstPoint.x
         var maxX:CGFloat = firstPoint.x
         var minY:CGFloat = firstPoint.y
@@ -97,7 +97,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
     }
     
     private func collisionFrame(shape:CollisionShape, matrix:SCMatrix4, inout minX:CGFloat, inout minY:CGFloat, inout maxX:CGFloat, inout maxY:CGFloat) {
-        let model = shape.graphicsState.modelMatrix() * matrix
+        let model = shape.transform.modelMatrix() * matrix
         for point in shape.points.map({ model * $0 }) {
             if point.x < minX {
                 minX = point.x
@@ -110,7 +110,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
                 maxY = point.y
             }
         }
-        let childModel = shape.graphicsState.modelMatrix(false) * matrix
+        let childModel = shape.transform.modelMatrix(false) * matrix
         for child in shape.children {
             self.collisionFrame(child, matrix: childModel, minX: &minX, minY: &minY, maxX: &maxX, maxY: &maxY)
         }

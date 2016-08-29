@@ -9,7 +9,7 @@ public struct CollisionLineSegment: CollisionShape, CustomStringConvertible {
     
     // MARK: - CollisionShape Properties
     
-    public var graphicsState = GraphicsState()
+    public var transform = Transform()
     public var children:[CollisionShape] = []
     public var lines:[CollisionLineSegment] { return [self] }
     public var points:[CGPoint] {
@@ -24,8 +24,8 @@ public struct CollisionLineSegment: CollisionShape, CustomStringConvertible {
     public init(firstPoint:CGPoint, secondPoint:CGPoint) {
         let frame = CGRect(points: [firstPoint, secondPoint])
         self.segment = LineSegment(first: firstPoint - frame.origin, second: secondPoint - frame.origin)
-        self.graphicsState.position = frame.origin
-        self.graphicsState.contentSize = frame.size
+        self.transform.position = frame.origin
+        self.transform.contentSize = frame.size
     }
     
     public init(x1:CGFloat, y1:CGFloat, x2:CGFloat, y2:CGFloat) {

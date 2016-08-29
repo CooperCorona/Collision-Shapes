@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC0302331D1EFD7700EB6A6C /* GraphicsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */; };
+		DC0302331D1EFD7700EB6A6C /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* Transform.swift */; };
 		DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302341D1F1EC700EB6A6C /* LineSegment.swift */; };
 		DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113901BB7487A00887A5C /* CollisionShapes.framework */; };
 		DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */; };
@@ -60,7 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsState.swift; sourceTree = "<group>"; };
+		DC0302321D1EFD7700EB6A6C /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		DC0302341D1F1EC700EB6A6C /* LineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegment.swift; sourceTree = "<group>"; };
 		DC8113901BB7487A00887A5C /* CollisionShapes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollisionShapes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8113951BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 				DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */,
 				DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */,
 				DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */,
-				DC0302321D1EFD7700EB6A6C /* GraphicsState.swift */,
 				DC0302341D1F1EC700EB6A6C /* LineSegment.swift */,
+				DC0302321D1EFD7700EB6A6C /* Transform.swift */,
 				DC8113951BB7487A00887A5C /* Info.plist */,
 			);
 			path = CollisionShapes;
@@ -297,7 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0302331D1EFD7700EB6A6C /* GraphicsState.swift in Sources */,
+				DC0302331D1EFD7700EB6A6C /* Transform.swift in Sources */,
 				DC8113B01BB7488F00887A5C /* CollisionLineSegment.swift in Sources */,
 				DC8113B31BB7488F00887A5C /* CollisionTriangle.swift in Sources */,
 				DC8113B11BB7488F00887A5C /* CollisionRectangle.swift in Sources */,

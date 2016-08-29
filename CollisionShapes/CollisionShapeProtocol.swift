@@ -7,7 +7,7 @@ public enum CollisionBoxType {
     case Both
 }
 
-public protocol CollisionShape: GraphicsStateProtocol {
+public protocol CollisionShape: TransformProtocol {
     
     var children:[CollisionShape] { get set }
     var boxType:CollisionBoxType { get }
@@ -47,8 +47,8 @@ extension CollisionShape {
     
     private func recursiveCollidesWith(selfTransform:SCMatrix4, shape:CollisionShape, shapeTransform:SCMatrix4) -> (CollisionShape, CollisionShape)? {
         
-        let t1 = (self.graphicsState.modelMatrix() * selfTransform)
-        let t2 = (shape.graphicsState.modelMatrix() * shapeTransform)
+        let t1 = (self.transform.modelMatrix() * selfTransform)
+        let t2 = (shape.transform.modelMatrix() * shapeTransform)
         let i1 = t1.inverse()
         let i2 = t2.inverse()
         
@@ -84,8 +84,8 @@ extension CollisionShape {
             }
         }
         
-        let selfChildTransform = self.graphicsState.modelMatrix(false) * selfTransform
-        let shapeChildTransform = shape.graphicsState.modelMatrix(false) * shapeTransform
+        let selfChildTransform = self.transform.modelMatrix(false) * selfTransform
+        let shapeChildTransform = shape.transform.modelMatrix(false) * shapeTransform
         for child in shape.children {
             if let collisionInfo = self.recursiveCollidesWith(selfTransform, shape: child, shapeTransform: shapeChildTransform) {
                 return collisionInfo
@@ -113,7 +113,7 @@ extension CollisionShape {
     
     public func generateSprite() -> GLSSprite {
         let sprite = GLSSprite(size: self.contentSize, texture: "White Tile")
-        sprite.graphicsState = self.graphicsState
+        sprite.transform = self.transform
         if self.points.count > 0 {
             let center = self.points.reduce(CGPoint.zero) { $0 + $1 } / CGFloat(self.points.count)
             var vertices:[UVertex] = []

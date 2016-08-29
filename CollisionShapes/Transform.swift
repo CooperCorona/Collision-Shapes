@@ -1,5 +1,5 @@
 //
-//  GraphicsState.swift
+//  Transform.swift
 //  CollisionShapes
 //
 //  Created by Cooper Knaak on 6/25/16.
@@ -9,7 +9,7 @@
 import UIKit
 import OmniSwift
 
-public struct GraphicsState {
+public struct Transform {
     
     public var contentSize          = CGSize.zero
     public var position             = CGPoint.zero
@@ -66,60 +66,60 @@ public struct GraphicsState {
     
 }
 
-public protocol GraphicsStateProtocol {
+public protocol TransformProtocol {
     
-    var graphicsState:GraphicsState { get set }
+    var transform:Transform { get set }
     
 }
 
-extension GraphicsStateProtocol {
+extension TransformProtocol {
     
     public var contentSize:CGSize {
-        get { return self.graphicsState.contentSize }
-        set { self.graphicsState.contentSize = newValue }
+        get { return self.transform.contentSize }
+        set { self.transform.contentSize = newValue }
     }
     
     public var position:CGPoint {
-        get { return self.graphicsState.position }
-        set { self.graphicsState.position = newValue }
+        get { return self.transform.position }
+        set { self.transform.position = newValue }
     }
     
     public var anchor:CGPoint {
-        get { return self.graphicsState.anchor }
-        set { self.graphicsState.anchor = newValue }
+        get { return self.transform.anchor }
+        set { self.transform.anchor = newValue }
     }
     
     public var rotation:CGFloat {
-        get { return self.graphicsState.rotation }
-        set { self.graphicsState.rotation = newValue }
+        get { return self.transform.rotation }
+        set { self.transform.rotation = newValue }
     }
     
     public var xScale:CGFloat {
-        get { return self.graphicsState.xScale }
-        set { self.graphicsState.xScale = newValue }
+        get { return self.transform.xScale }
+        set { self.transform.xScale = newValue }
     }
     
     public var yScale:CGFloat {
-        get { return self.graphicsState.yScale }
-        set { self.graphicsState.yScale = newValue }
+        get { return self.transform.yScale }
+        set { self.transform.yScale = newValue }
     }
     
     public var scale:CGFloat {
-        get { return self.graphicsState.scale }
-        set { self.graphicsState.scale = newValue }
+        get { return self.transform.scale }
+        set { self.transform.scale = newValue }
     }
     
     public var center:CGPoint {
-        get { return self.graphicsState.center }
-        set { self.graphicsState.center = newValue }
+        get { return self.transform.center }
+        set { self.transform.center = newValue }
     }
 }
 
 extension GLSNode {
     
-    public var graphicsState:GraphicsState {
+    public var transform:Transform {
         get {
-            return GraphicsState(contentSize: self.contentSize, position: self.position, anchor: self.anchor, rotation: self.rotation, xScale: self.scaleX, yScale: self.scaleY)
+            return Transform(contentSize: self.contentSize, position: self.position, anchor: self.anchor, rotation: self.rotation, xScale: self.scaleX, yScale: self.scaleY)
         }
         set {
             self.contentSize    = newValue.contentSize

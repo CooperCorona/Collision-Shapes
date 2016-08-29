@@ -59,7 +59,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
     }
     
     public var boxType = CollisionBoxType.Both
-    public var graphicsState = GraphicsState()
+    public var transform = Transform()
     
     public var children:[CollisionShape] = []
     
@@ -75,8 +75,8 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
         let points = [firstPoint, secondPoint, thirdPoint]
         let frame = CGRect(points: points)
         self.points = points.map() { $0 - frame.origin }
-        self.graphicsState.position = frame.origin
-        self.graphicsState.contentSize = frame.size
+        self.transform.position = frame.origin
+        self.transform.contentSize = frame.size
     }
     
     public init(x1:CGFloat, y1:CGFloat, x2:CGFloat, y2:CGFloat, x3:CGFloat, y3:CGFloat) {

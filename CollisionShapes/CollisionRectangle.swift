@@ -5,7 +5,7 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
     
     // MARK: - Properties
     
-    public var graphicsState = GraphicsState()
+    public var transform = Transform()
     
     // MARK: - CollisionShape Properties
     
@@ -26,7 +26,7 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
     // MARK: - Setup
     
     public init(size:CGSize) {
-        self.graphicsState.contentSize = size
+        self.transform.contentSize = size
     }
     
     public init(center:CGPoint, size:CGSize) {
