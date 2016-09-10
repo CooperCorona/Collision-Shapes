@@ -1,5 +1,10 @@
-import UIKit
-import OmniSwift
+
+#if os(iOS)
+    import UIKit
+#else
+    import Cocoa
+#endif
+import CoronaConvenience
 
 public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
     

@@ -6,8 +6,13 @@
 //  Copyright © 2016 Cooper Knaak. All rights reserved.
 //
 
-import UIKit
-import OmniSwift
+#if os(iOS)
+    import UIKit
+#else
+    import Cocoa
+#endif
+import CoronaConvenience
+import CoronaStructures
 
 /**
  CollisionGroup conforms to the CollisionShapeProtocol but does not

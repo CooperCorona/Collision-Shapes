@@ -1,5 +1,10 @@
+
+#if os(iOS)
 import UIKit
-import OmniSwift
+#else
+import Cocoa
+#endif
+import CoronaConvenience
 
 public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     

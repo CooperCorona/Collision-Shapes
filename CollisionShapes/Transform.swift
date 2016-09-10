@@ -6,8 +6,13 @@
 //  Copyright © 2016 Cooper Knaak. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
-import OmniSwift
+#else
+import Cocoa
+#endif
+import CoronaConvenience
+import CoronaStructures
 
 public struct Transform {
     
@@ -113,22 +118,4 @@ extension TransformProtocol {
         get { return self.transform.center }
         set { self.transform.center = newValue }
     }
-}
-
-extension GLSNode {
-    
-    public var transform:Transform {
-        get {
-            return Transform(contentSize: self.contentSize, position: self.position, anchor: self.anchor, rotation: self.rotation, xScale: self.scaleX, yScale: self.scaleY)
-        }
-        set {
-            self.contentSize    = newValue.contentSize
-            self.position       = newValue.position
-            self.anchor         = newValue.anchor
-            self.rotation       = newValue.rotation
-            self.scaleX         = newValue.xScale
-            self.scaleY         = newValue.yScale
-        }
-    }
-    
 }

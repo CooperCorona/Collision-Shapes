@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DC0302331D1EFD7700EB6A6C /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* Transform.swift */; };
 		DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302341D1F1EC700EB6A6C /* LineSegment.swift */; };
+		DC154E891D82435200880087 /* CoronaConvenience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC154E881D82434500880087 /* CoronaConvenience.framework */; };
+		DC154E911D82453D00880087 /* CoronaStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC154E901D82453400880087 /* CoronaStructures.framework */; };
 		DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113901BB7487A00887A5C /* CollisionShapes.framework */; };
 		DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */; };
 		DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */; };
@@ -16,12 +18,25 @@
 		DC8113B11BB7488F00887A5C /* CollisionRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */; };
 		DC8113B21BB7488F00887A5C /* CollisionShapeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */; };
 		DC8113B31BB7488F00887A5C /* CollisionTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */; };
-		DC8113C31BB74C4500887A5C /* OmniSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113BC1BB74C3800887A5C /* OmniSwift.framework */; };
 		DCA9EE081D54265A0042A4DD /* CollisionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */; };
 		DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DC154E871D82434500880087 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC4D07951D7D233A00862432;
+			remoteInfo = CoronaConvenience;
+		};
+		DC154E8F1D82453400880087 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC7428CE1D7F4446001AF8E1;
+			remoteInfo = CoronaStructures;
+		};
 		DC81139C1BB7487A00887A5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC8113871BB7487A00887A5C /* Project object */;
@@ -29,39 +44,13 @@
 			remoteGlobalIDString = DC81138F1BB7487A00887A5C;
 			remoteInfo = CollisionShapes;
 		};
-		DC8113BB1BB74C3800887A5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC72AA3B1B166C7D0035BF49;
-			remoteInfo = OmniSwift;
-		};
-		DC8113BD1BB74C3800887A5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC72AA461B166C7D0035BF49;
-			remoteInfo = OmniSwiftTests;
-		};
-		DC8113BF1BB74C3800887A5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC37E8B61BB740D700313B10;
-			remoteInfo = OmniSwiftShapes;
-		};
-		DC8113C11BB74C3800887A5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC37E8BF1BB740D700313B10;
-			remoteInfo = OmniSwiftShapesTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DC0302321D1EFD7700EB6A6C /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		DC0302341D1F1EC700EB6A6C /* LineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegment.swift; sourceTree = "<group>"; };
+		DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoronaConvenience.xcodeproj; path = "../Refactored Dependencies/CoronaConvenience/CoronaConvenience.xcodeproj"; sourceTree = "<group>"; };
+		DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoronaStructures.xcodeproj; path = "../Refactored Dependencies/CoronaStructures/CoronaStructures.xcodeproj"; sourceTree = "<group>"; };
 		DC8113901BB7487A00887A5C /* CollisionShapes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollisionShapes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8113951BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollisionShapesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +61,6 @@
 		DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionRectangle.swift; sourceTree = "<group>"; };
 		DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionShapeProtocol.swift; sourceTree = "<group>"; };
 		DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionTriangle.swift; sourceTree = "<group>"; };
-		DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OmniSwift.xcodeproj; path = ../OmniSwift/OmniSwift.xcodeproj; sourceTree = "<group>"; };
 		DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionGroup.swift; sourceTree = "<group>"; };
 		DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollisionRectangle+Positioning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8113C31BB74C4500887A5C /* OmniSwift.framework in Frameworks */,
+				DC154E911D82453D00880087 /* CoronaStructures.framework in Frameworks */,
+				DC154E891D82435200880087 /* CoronaConvenience.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,10 +86,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC154E841D82434500880087 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC154E881D82434500880087 /* CoronaConvenience.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC154E8B1D82453400880087 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC154E901D82453400880087 /* CoronaStructures.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DC8113861BB7487A00887A5C = {
 			isa = PBXGroup;
 			children = (
-				DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */,
+				DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */,
+				DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */,
 				DC8113921BB7487A00887A5C /* CollisionShapes */,
 				DC81139E1BB7487A00887A5C /* CollisionShapesTests */,
 				DC8113911BB7487A00887A5C /* Products */,
@@ -140,17 +146,6 @@
 				DC8113A11BB7487A00887A5C /* Info.plist */,
 			);
 			path = CollisionShapesTests;
-			sourceTree = "<group>";
-		};
-		DC8113B51BB74C3800887A5C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DC8113BC1BB74C3800887A5C /* OmniSwift.framework */,
-				DC8113BE1BB74C3800887A5C /* OmniSwiftTests.xctest */,
-				DC8113C01BB74C3800887A5C /* OmniSwiftShapes.framework */,
-				DC8113C21BB74C3800887A5C /* OmniSwiftShapesTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +227,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = DC8113B51BB74C3800887A5C /* Products */;
-					ProjectRef = DC8113B41BB74C3800887A5C /* OmniSwift.xcodeproj */;
+					ProductGroup = DC154E841D82434500880087 /* Products */;
+					ProjectRef = DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */;
+				},
+				{
+					ProductGroup = DC154E8B1D82453400880087 /* Products */;
+					ProjectRef = DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -245,32 +244,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DC8113BC1BB74C3800887A5C /* OmniSwift.framework */ = {
+		DC154E881D82434500880087 /* CoronaConvenience.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = OmniSwift.framework;
-			remoteRef = DC8113BB1BB74C3800887A5C /* PBXContainerItemProxy */;
+			path = CoronaConvenience.framework;
+			remoteRef = DC154E871D82434500880087 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DC8113BE1BB74C3800887A5C /* OmniSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OmniSwiftTests.xctest;
-			remoteRef = DC8113BD1BB74C3800887A5C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DC8113C01BB74C3800887A5C /* OmniSwiftShapes.framework */ = {
+		DC154E901D82453400880087 /* CoronaStructures.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = OmniSwiftShapes.framework;
-			remoteRef = DC8113BF1BB74C3800887A5C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DC8113C21BB74C3800887A5C /* OmniSwiftShapesTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OmniSwiftShapesTests.xctest;
-			remoteRef = DC8113C11BB74C3800887A5C /* PBXContainerItemProxy */;
+			path = CoronaStructures.framework;
+			remoteRef = DC154E8F1D82453400880087 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -425,13 +410,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = CollisionShapes/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Corona-Corporation.CollisionShapes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
 		};
@@ -443,12 +432,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = CollisionShapes/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Corona-Corporation.CollisionShapes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Release;
 		};

@@ -6,7 +6,12 @@
 //  Copyright © 2016 Cooper Knaak. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import Cocoa
+#endif
+import CoronaConvenience
 
 /**
  Defines a lightweight implementation of a line segment
