@@ -59,9 +59,20 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
         self.regeneratePoints()
     }
     
+    public init(radius:CGFloat) {
+        self.contentSize = CGSize(square: 2.0 * radius)
+        self.regeneratePoints()
+    }
+    
     public init(center:CGPoint, size:CGSize) {
         self.center = center
         self.contentSize = size
+        self.regeneratePoints()
+    }
+    
+    public init(center:CGPoint, radius:CGFloat) {
+        self.center = center
+        self.contentSize = CGSize(square: 2.0 * radius)
         self.regeneratePoints()
     }
     
