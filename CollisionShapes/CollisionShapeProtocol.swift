@@ -8,9 +8,9 @@ import CoronaConvenience
 import CoronaStructures
 
 public enum CollisionBoxType {
-    case Hit
-    case Hurt
-    case Both
+    case hit
+    case hurt
+    case both
 }
 
 public protocol CollisionShape: TransformProtocol {
@@ -26,7 +26,7 @@ public protocol CollisionShape: TransformProtocol {
 
 extension CollisionShape {
     
-    public mutating func addChild(child:CollisionShape) {
+    public mutating func addChild(_ child:CollisionShape) {
         self.children.append(child)
     }
     
@@ -37,7 +37,7 @@ extension CollisionShape {
     }
     
     ///Returns true if at least one of the points in the array lies inside the shape.
-    public func pointLiesInside(points:[CGPoint]) -> Bool {
+    public func pointLiesInside(_ points:[CGPoint]) -> Bool {
         for point in points {
             if self.pointLiesInside(point) {
                 return true
@@ -47,11 +47,11 @@ extension CollisionShape {
         return false
     }
     
-    public func collidesWithShape(shape:CollisionShape) -> (CollisionShape, CollisionShape)? {
+    public func collidesWithShape(_ shape:CollisionShape) -> (CollisionShape, CollisionShape)? {
         return self.recursiveCollidesWith(SCMatrix4(), shape: shape, shapeTransform: SCMatrix4())
     }
     
-    private func recursiveCollidesWith(selfTransform:SCMatrix4, shape:CollisionShape, shapeTransform:SCMatrix4) -> (CollisionShape, CollisionShape)? {
+    fileprivate func recursiveCollidesWith(_ selfTransform:SCMatrix4, shape:CollisionShape, shapeTransform:SCMatrix4) -> (CollisionShape, CollisionShape)? {
         
         let t1 = (self.transform.modelMatrix() * selfTransform)
         let t2 = (shape.transform.modelMatrix() * shapeTransform)
@@ -113,7 +113,7 @@ extension CollisionShape {
         return nil
     }
     
-    private func transformLine(line:LineSegment, by selfMatrix:SCMatrix4, and inverseMatrix:SCMatrix4) -> LineSegment {
+    fileprivate func transformLine(_ line:LineSegment, by selfMatrix:SCMatrix4, and inverseMatrix:SCMatrix4) -> LineSegment {
         return LineSegment(first: inverseMatrix * (selfMatrix * line.firstPoint), second: inverseMatrix * (selfMatrix * line.secondPoint))
     }
     

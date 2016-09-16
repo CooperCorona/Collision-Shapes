@@ -60,12 +60,12 @@ public struct LineSegment {
         self.secondPoint = second
     }
     
-    public static func linesBetweenPoints(points:[CGPoint]) -> [LineSegment] {
+    public static func linesBetweenPoints(_ points:[CGPoint]) -> [LineSegment] {
         var lines:[LineSegment] = []
         for (i, p) in points.enumerateSkipLast() {
             lines.append(LineSegment(first: p, second: points[i + 1]))
         }
-        if let first = points.first, last = points.last where !(first ~= last) {
+        if let first = points.first, let last = points.last , !(first ~= last) {
             lines.append(LineSegment(first: first, second: last))
         }
         return lines
@@ -73,22 +73,22 @@ public struct LineSegment {
     
     // MARK: - Logic
     
-    public func yAtX(x:CGFloat) -> CGFloat? {
-        guard let slope = self.slope, yIntercept = self.yIntercept else {
+    public func yAtX(_ x:CGFloat) -> CGFloat? {
+        guard let slope = self.slope, let yIntercept = self.yIntercept else {
             return nil
         }
         return slope * x + yIntercept
     }
     
-    public func pointAtX(x:CGFloat) -> CGPoint? {
+    public func pointAtX(_ x:CGFloat) -> CGPoint? {
         guard let y = self.yAtX(x) else {
             return nil
         }
         return CGPoint(x: x, y: y)
     }
     
-    public func pointLiesAbove(point:CGPoint) -> Bool {
-        if let slope = self.slope, yIntercept = self.yIntercept {
+    public func pointLiesAbove(_ point:CGPoint) -> Bool {
+        if let slope = self.slope, let yIntercept = self.yIntercept {
             return point.y - slope * point.x > yIntercept
         } else {
             return point.x > self.firstPoint.x
@@ -97,11 +97,11 @@ public struct LineSegment {
     
     // MARK: - Collision
     
-    public static func value(value:CGFloat, isInBetween lower:CGFloat, and higher:CGFloat) -> Bool {
+    public static func value(_ value:CGFloat, isInBetween lower:CGFloat, and higher:CGFloat) -> Bool {
         return (lower <= value && value <= higher) || (higher <= value && value <= lower)
     }
     
-    public func collidesWith(line:LineSegment) -> Bool {
+    public func collidesWith(_ line:LineSegment) -> Bool {
         
         if self.isVertical && line.isVertical {
             guard self.firstPoint.x ~= line.firstPoint.x else {
@@ -124,7 +124,7 @@ public struct LineSegment {
         }
         
         
-        guard let slope1 = self.slope, yIntercept1 = self.yIntercept, slope2 = line.slope, yIntercept2 = line.yIntercept where !(slope1 ~= slope2) else {
+        guard let slope1 = self.slope, let yIntercept1 = self.yIntercept, let slope2 = line.slope, let yIntercept2 = line.yIntercept , !(slope1 ~= slope2) else {
             return false
         }
         
@@ -136,7 +136,7 @@ public struct LineSegment {
         return self.frame.contains(point) && line.frame.contains(point)
     }
     
-    public func pointLiesInside(point: CGPoint) -> Bool {
+    public func pointLiesInside(_ point: CGPoint) -> Bool {
         
         guard self.frame.contains(point) else {
             return false

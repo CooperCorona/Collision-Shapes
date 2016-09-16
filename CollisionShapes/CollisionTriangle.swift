@@ -10,7 +10,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
     
     // MARK: - Properties
     
-    private(set) public var points:[CGPoint] = [CGPoint.zero, CGPoint.zero, CGPoint.zero]
+    fileprivate(set) public var points:[CGPoint] = [CGPoint.zero, CGPoint.zero, CGPoint.zero]
     public var firstPoint:CGPoint {
         get {
             return self.points[0]
@@ -47,7 +47,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
         var maxX = self.firstPoint.x
         var minY = self.firstPoint.y
         var maxY = self.firstPoint.y
-        for (_, point) in enumerate(self.points, range: 1..<3) {
+        for (_, point) in self.points.enumerateRange(1..<3) {
             if point.x < minX {
                 minX = point.x
             } else if point.x > maxX {
@@ -63,7 +63,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
         return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
     }
     
-    public var boxType = CollisionBoxType.Both
+    public var boxType = CollisionBoxType.both
     public var transform = Transform()
     
     public var children:[CollisionShape] = []
@@ -97,7 +97,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
     
     // MARK: - Logic
     
-    public func pointLiesInside(point:CGPoint) -> Bool {
+    public func pointLiesInside(_ point:CGPoint) -> Bool {
         
         for line in LineSegment.linesBetweenPoints(self.points) {
             if line.pointLiesAbove(self.center) != line.pointLiesAbove(point) {

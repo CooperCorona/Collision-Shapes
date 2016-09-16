@@ -20,7 +20,7 @@ public struct CollisionLineSegment: CollisionShape, CustomStringConvertible {
     public var points:[CGPoint] {
         return self.segment.points
     }
-    public var boxType = CollisionBoxType.Both
+    public var boxType = CollisionBoxType.both
     
     public var description:String { return "LineSegment (\(self.segment.firstPoint), \(self.segment.secondPoint))" }
     
@@ -45,7 +45,7 @@ public struct CollisionLineSegment: CollisionShape, CustomStringConvertible {
         self.init(firstPoint: CGPoint(x: array[0], y: array[1]), secondPoint: CGPoint(x: array[2], y: array[3]))
     }
 
-    public func pointLiesInside(point: CGPoint) -> Bool {
+    public func pointLiesInside(_ point: CGPoint) -> Bool {
         return self.segment.pointLiesInside(point)
     }
     

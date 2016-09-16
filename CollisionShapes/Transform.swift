@@ -61,7 +61,7 @@ public struct Transform {
         self.yScale = yScale
     }
     
-    public func modelMatrix(renderingSelf:Bool = true) -> SCMatrix4 {
+    public func modelMatrix(_ renderingSelf:Bool = true) -> SCMatrix4 {
         if renderingSelf {
             return SCMatrix4(translation: self.position, rotation: self.rotation, scaleX: self.xScale, scaleY: self.yScale, anchor: self.anchor, size: self.contentSize)
         } else {

@@ -15,7 +15,7 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
     // MARK: - CollisionShape Properties
     
     public var children:[CollisionShape] = []
-    public var boxType = CollisionBoxType.Both
+    public var boxType = CollisionBoxType.both
     
     public var description:String { return "CollisionRectangle (\(self.position), \(self.contentSize))" }
     
@@ -41,7 +41,7 @@ public struct CollisionRectangle: CollisionShape, CustomStringConvertible {
     
     // MARK: - Logic
     
-    public func pointLiesInside(point: CGPoint) -> Bool {
+    public func pointLiesInside(_ point: CGPoint) -> Bool {
         return 0.0 <= point.x && point.x <= self.contentSize.width
             && 0.0 <= point.y && point.y <= self.contentSize.height
     }

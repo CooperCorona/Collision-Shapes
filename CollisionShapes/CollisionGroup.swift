@@ -21,7 +21,7 @@ import CoronaStructures
  a single point colliding with something). Use it to group shapes
  together.
  */
-public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
+public struct CollisionGroup: CollisionShape, ExpressibleByArrayLiteral {
 
     public typealias Element = CollisionShape
     
@@ -31,12 +31,12 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
             self.axisAlignedCollisionFrame = self.calculateCollisionFrame()
         }
     }
-    public var boxType = CollisionBoxType.Both
+    public var boxType = CollisionBoxType.both
     
     public var points:[CGPoint] = []
     
     public var log = false
-    private var axisAlignedCollisionFrame = CGRect.zero
+    fileprivate var axisAlignedCollisionFrame = CGRect.zero
     public var collisionFrame:CGRect {
         let matrix = self.transform.modelMatrix()
         let points = [
@@ -79,7 +79,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
         return false
     }
 
-    private func calculateCollisionFrame() -> CGRect {
+    fileprivate func calculateCollisionFrame() -> CGRect {
         guard let firstChild = self.children.first else {
             return CGRect.zero
         }
@@ -101,7 +101,7 @@ public struct CollisionGroup: CollisionShape, ArrayLiteralConvertible {
         return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
     }
     
-    private func collisionFrame(shape:CollisionShape, matrix:SCMatrix4, inout minX:CGFloat, inout minY:CGFloat, inout maxX:CGFloat, inout maxY:CGFloat) {
+    fileprivate func collisionFrame(_ shape:CollisionShape, matrix:SCMatrix4, minX:inout CGFloat, minY:inout CGFloat, maxX:inout CGFloat, maxY:inout CGFloat) {
         let model = shape.transform.modelMatrix() * matrix
         for point in shape.points.map({ model * $0 }) {
             if point.x < minX {

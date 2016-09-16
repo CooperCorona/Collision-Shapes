@@ -48,9 +48,9 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
         }
     }
     public var children:[CollisionShape] = []
-    public var boxType = CollisionBoxType.Both
+    public var boxType = CollisionBoxType.both
 
-    public private(set) var points:[CGPoint] = []
+    public fileprivate(set) var points:[CGPoint] = []
     
     // MARK: - Setup
     
@@ -86,7 +86,7 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     
     // MARK: - Logic
     
-    public func pointForAngle(angle:CGFloat) -> CGPoint {
+    public func pointForAngle(_ angle:CGFloat) -> CGPoint {
         let cosineSquared   = cos(angle) * cos(angle)
         let sineSquared     = sin(angle) * sin(angle)
         let aSquared        = self.a * self.a
@@ -108,7 +108,7 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     
     // MARK: - CollisionShape Logic
     
-    public func pointLiesInside(point: CGPoint) -> Bool {
+    public func pointLiesInside(_ point: CGPoint) -> Bool {
         let distance = self.focii.map() { $0.distanceFrom(point) } .reduce(0.0) { $0 + $1 }
         if self.a > self.b {
             return distance <= 2.0 * self.a
