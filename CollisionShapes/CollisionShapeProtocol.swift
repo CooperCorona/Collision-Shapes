@@ -47,11 +47,11 @@ extension CollisionShape {
         return false
     }
     
-    public func collidesWithShape(_ shape:CollisionShape) -> (CollisionShape, CollisionShape)? {
+    public func collidesWithShape(_ shape:CollisionShape) -> CollisionResult? {
         return self.recursiveCollidesWith(SCMatrix4(), shape: shape, shapeTransform: SCMatrix4())
     }
     
-    fileprivate func recursiveCollidesWith(_ selfTransform:SCMatrix4, shape:CollisionShape, shapeTransform:SCMatrix4) -> (CollisionShape, CollisionShape)? {
+    fileprivate func recursiveCollidesWith(_ selfTransform:SCMatrix4, shape:CollisionShape, shapeTransform:SCMatrix4) -> CollisionResult? {
         
         let t1 = (self.transform.modelMatrix() * selfTransform)
         let t2 = (shape.transform.modelMatrix() * shapeTransform)
@@ -62,13 +62,13 @@ extension CollisionShape {
         let shapePoints = shape.points.map() { i1 * (t2 * $0) }
         for point in selfPoints {
             if shape.pointLiesInside(point) {
-                return (self, shape)
+                return CollisionResult(firstShape: self, secondShape: shape, collisionPoint: point).transform(by: t2)
             }
         }
         
         for point in shapePoints {
             if self.pointLiesInside(point) {
-                return (self, shape)
+                return CollisionResult(firstShape: self, secondShape: shape, collisionPoint: point).transform(by: t1)
             }
         }
         
@@ -76,16 +76,16 @@ extension CollisionShape {
         let shapeLines = LineSegment.linesBetweenPoints(shape.points)
         for line in selfLines.map({ self.transformLine($0, by: t1, and: i2) }) {
             for sLine in shapeLines {
-                if line.collidesWith(sLine) {
-                    return (self, shape)
+                if let point = line.collidesWith(sLine) {
+                    return CollisionResult(firstShape: self, secondShape: shape, collisionPoint: point).transform(by: t2)
                 }
             }
         }
         
         for sLine in shapeLines.map({ self.transformLine($0, by: t2, and: i1) }) {
             for line in selfLines {
-                if sLine.collidesWith(line) {
-                    return (self, shape)
+                if let point = sLine.collidesWith(line) {
+                    return CollisionResult(firstShape: self, secondShape: shape, collisionPoint: point).transform(by: t1)
                 }
             }
         }

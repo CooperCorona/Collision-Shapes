@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		DC0302331D1EFD7700EB6A6C /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* Transform.swift */; };
 		DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302341D1F1EC700EB6A6C /* LineSegment.swift */; };
-		DC154E891D82435200880087 /* CoronaConvenience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC154E881D82434500880087 /* CoronaConvenience.framework */; };
-		DC154E911D82453D00880087 /* CoronaStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC154E901D82453400880087 /* CoronaStructures.framework */; };
 		DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113901BB7487A00887A5C /* CollisionShapes.framework */; };
 		DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */; };
 		DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */; };
@@ -18,25 +16,14 @@
 		DC8113B11BB7488F00887A5C /* CollisionRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */; };
 		DC8113B21BB7488F00887A5C /* CollisionShapeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */; };
 		DC8113B31BB7488F00887A5C /* CollisionTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */; };
+		DC8F51AE1DE2659C00CCCC2F /* CoronaConvenience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8F51A71DE2658900CCCC2F /* CoronaConvenience.framework */; };
+		DC8F51AF1DE2659C00CCCC2F /* CoronaStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8F51AD1DE2658E00CCCC2F /* CoronaStructures.framework */; };
+		DC9F27591E80590500B2B17C /* CollisionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F27581E80590500B2B17C /* CollisionResult.swift */; };
 		DCA9EE081D54265A0042A4DD /* CollisionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */; };
 		DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DC154E871D82434500880087 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC4D07951D7D233A00862432;
-			remoteInfo = CoronaConvenience;
-		};
-		DC154E8F1D82453400880087 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DC7428CE1D7F4446001AF8E1;
-			remoteInfo = CoronaStructures;
-		};
 		DC81139C1BB7487A00887A5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC8113871BB7487A00887A5C /* Project object */;
@@ -44,13 +31,25 @@
 			remoteGlobalIDString = DC81138F1BB7487A00887A5C;
 			remoteInfo = CollisionShapes;
 		};
+		DC8F51A61DE2658900CCCC2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC8F51A21DE2658900CCCC2F /* CoronaConvenience.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC4D07951D7D233A00862432;
+			remoteInfo = CoronaConvenience;
+		};
+		DC8F51AC1DE2658E00CCCC2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC8F51A81DE2658E00CCCC2F /* CoronaStructures.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC7428CE1D7F4446001AF8E1;
+			remoteInfo = CoronaStructures;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DC0302321D1EFD7700EB6A6C /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		DC0302341D1F1EC700EB6A6C /* LineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegment.swift; sourceTree = "<group>"; };
-		DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoronaConvenience.xcodeproj; path = "../Refactored Dependencies/CoronaConvenience/CoronaConvenience.xcodeproj"; sourceTree = "<group>"; };
-		DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoronaStructures.xcodeproj; path = "../Refactored Dependencies/CoronaStructures/CoronaStructures.xcodeproj"; sourceTree = "<group>"; };
 		DC8113901BB7487A00887A5C /* CollisionShapes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollisionShapes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8113951BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollisionShapesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +60,9 @@
 		DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionRectangle.swift; sourceTree = "<group>"; };
 		DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionShapeProtocol.swift; sourceTree = "<group>"; };
 		DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionTriangle.swift; sourceTree = "<group>"; };
+		DC8F51A21DE2658900CCCC2F /* CoronaConvenience.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoronaConvenience.xcodeproj; path = ../CoronaConvenience/CoronaConvenience.xcodeproj; sourceTree = "<group>"; };
+		DC8F51A81DE2658E00CCCC2F /* CoronaStructures.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoronaStructures.xcodeproj; path = ../CoronaStructures/CoronaStructures.xcodeproj; sourceTree = "<group>"; };
+		DC9F27581E80590500B2B17C /* CollisionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionResult.swift; sourceTree = "<group>"; };
 		DCA9EE071D54265A0042A4DD /* CollisionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionGroup.swift; sourceTree = "<group>"; };
 		DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollisionRectangle+Positioning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,8 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC154E911D82453D00880087 /* CoronaStructures.framework in Frameworks */,
-				DC154E891D82435200880087 /* CoronaConvenience.framework in Frameworks */,
+				DC8F51AE1DE2659C00CCCC2F /* CoronaConvenience.framework in Frameworks */,
+				DC8F51AF1DE2659C00CCCC2F /* CoronaStructures.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,27 +88,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DC154E841D82434500880087 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DC154E881D82434500880087 /* CoronaConvenience.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		DC154E8B1D82453400880087 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DC154E901D82453400880087 /* CoronaStructures.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		DC8113861BB7487A00887A5C = {
 			isa = PBXGroup;
 			children = (
-				DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */,
-				DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */,
+				DC8F51A21DE2658900CCCC2F /* CoronaConvenience.xcodeproj */,
+				DC8F51A81DE2658E00CCCC2F /* CoronaStructures.xcodeproj */,
 				DC8113921BB7487A00887A5C /* CollisionShapes */,
 				DC81139E1BB7487A00887A5C /* CollisionShapesTests */,
 				DC8113911BB7487A00887A5C /* Products */,
@@ -130,6 +116,7 @@
 				DC8113AB1BB7488F00887A5C /* CollisionLineSegment.swift */,
 				DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */,
 				DCD3BAC11C06A52200730528 /* CollisionRectangle+Positioning.swift */,
+				DC9F27581E80590500B2B17C /* CollisionResult.swift */,
 				DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */,
 				DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */,
 				DC0302341D1F1EC700EB6A6C /* LineSegment.swift */,
@@ -146,6 +133,22 @@
 				DC8113A11BB7487A00887A5C /* Info.plist */,
 			);
 			path = CollisionShapesTests;
+			sourceTree = "<group>";
+		};
+		DC8F51A31DE2658900CCCC2F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC8F51A71DE2658900CCCC2F /* CoronaConvenience.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC8F51A91DE2658E00CCCC2F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC8F51AD1DE2658E00CCCC2F /* CoronaStructures.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,12 +233,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = DC154E841D82434500880087 /* Products */;
-					ProjectRef = DC154E831D82434500880087 /* CoronaConvenience.xcodeproj */;
+					ProductGroup = DC8F51A31DE2658900CCCC2F /* Products */;
+					ProjectRef = DC8F51A21DE2658900CCCC2F /* CoronaConvenience.xcodeproj */;
 				},
 				{
-					ProductGroup = DC154E8B1D82453400880087 /* Products */;
-					ProjectRef = DC154E8A1D82453400880087 /* CoronaStructures.xcodeproj */;
+					ProductGroup = DC8F51A91DE2658E00CCCC2F /* Products */;
+					ProjectRef = DC8F51A81DE2658E00CCCC2F /* CoronaStructures.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -247,18 +250,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DC154E881D82434500880087 /* CoronaConvenience.framework */ = {
+		DC8F51A71DE2658900CCCC2F /* CoronaConvenience.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CoronaConvenience.framework;
-			remoteRef = DC154E871D82434500880087 /* PBXContainerItemProxy */;
+			remoteRef = DC8F51A61DE2658900CCCC2F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DC154E901D82453400880087 /* CoronaStructures.framework */ = {
+		DC8F51AD1DE2658E00CCCC2F /* CoronaStructures.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CoronaStructures.framework;
-			remoteRef = DC154E8F1D82453400880087 /* PBXContainerItemProxy */;
+			remoteRef = DC8F51AC1DE2658E00CCCC2F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -294,6 +297,7 @@
 				DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */,
 				DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */,
 				DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */,
+				DC9F27591E80590500B2B17C /* CollisionResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

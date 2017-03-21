@@ -74,7 +74,7 @@ public struct CollisionGroup: CollisionShape, ExpressibleByArrayLiteral {
         self.axisAlignedCollisionFrame = self.calculateCollisionFrame()
     }
     
-    ///Point cannot lie inside it because a CollisionGrup defines no shape.
+    ///Point cannot lie inside it because a CollisionGroup defines no shape.
     public func pointLiesInside(_: CGPoint) -> Bool {
         return false
     }

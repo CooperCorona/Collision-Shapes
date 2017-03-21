@@ -101,22 +101,46 @@ public struct LineSegment {
         return (lower <= value && value <= higher) || (higher <= value && value <= lower)
     }
     
-    public func collidesWith(_ line:LineSegment) -> Bool {
+    /**
+     Determines if two line segments collide. Instead of returning
+     a boolean, collidesWith returns the collision point because
+     the CollisionShape collidesWith method needs it. Thus, it
+     uses nil to test for no collision.
+     - parameter line: Another line to determine collision with.
+     - returns: The collision point of the two lines, or nil if the lines don't collide.
+     */
+    public func collidesWith(_ line:LineSegment) -> CGPoint? {
         
         if self.isVertical && line.isVertical {
             guard self.firstPoint.x ~= line.firstPoint.x else {
-                return false
+                return nil
             }
-            return LineSegment.value(line.firstPoint.y,  isInBetween: self.firstPoint.y, and: self.secondPoint.y)
-                || LineSegment.value(line.secondPoint.y, isInBetween: self.firstPoint.y, and: self.secondPoint.y)
+            if LineSegment.value(line.firstPoint.y, isInBetween: self.firstPoint.y, and: self.secondPoint.y) {
+                let firstMid  = (line.firstPoint.y + self.firstPoint.y) / 2.0
+                let secondMid = (line.firstPoint.y + self.secondPoint.y) / 2.0
+                if LineSegment.value(firstMid, isInBetween: line.firstPoint.y, and: line.secondPoint.y) {
+                    return CGPoint(x: self.firstPoint.x, y: firstMid)
+                } else {
+                    return CGPoint(x: self.firstPoint.y, y: secondMid)
+                }
+            } else if LineSegment.value(line.secondPoint.y, isInBetween: self.firstPoint.y, and: self.secondPoint.y) {
+                let firstMid  = (line.secondPoint.y + self.firstPoint.y) / 2.0
+                let secondMid = (line.secondPoint.y + self.secondPoint.y) / 2.0
+                if LineSegment.value(firstMid, isInBetween: line.firstPoint.y, and: line.secondPoint.y) {
+                    return CGPoint(x: self.firstPoint.x, y: firstMid)
+                } else {
+                    return CGPoint(x: self.firstPoint.y, y: secondMid)
+                }
+            } else {
+                return nil
+            }
         } else if self.isVertical {
             if let point = line.pointAtX(self.firstPoint.x) {
-                //                print("Checking Vertical: \(point)")
-                //                return self.frame.contains(point) && line.frame.contains(point)
-                return line.pointLiesAbove(self.firstPoint) != line.pointLiesAbove(self.secondPoint) && line.frame.contains(point)
-            } else {
-                return false
+                if line.pointLiesAbove(self.firstPoint) != line.pointLiesAbove(self.secondPoint) && line.frame.contains(point) {
+                    return point
+                }
             }
+            return nil
         } else if line.isVertical {
             // This causes 'self' and 'line' to get flipped,
             // causing the previous if statement to get executed.
@@ -125,15 +149,19 @@ public struct LineSegment {
         
         
         guard let slope1 = self.slope, let yIntercept1 = self.yIntercept, let slope2 = line.slope, let yIntercept2 = line.yIntercept , !(slope1 ~= slope2) else {
-            return false
+            return nil
         }
         
         let x = (yIntercept1 - yIntercept2) / (slope2 - slope1)
         guard let point = self.pointAtX(x) else {
-            return false
+            return nil
         }
         
-        return self.frame.contains(point) && line.frame.contains(point)
+        if self.frame.contains(point) && line.frame.contains(point) {
+            return point
+        } else {
+            return nil
+        }
     }
     
     public func pointLiesInside(_ point: CGPoint) -> Bool {
