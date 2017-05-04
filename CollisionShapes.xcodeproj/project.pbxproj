@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC0302331D1EFD7700EB6A6C /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* Transform.swift */; };
 		DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302341D1F1EC700EB6A6C /* LineSegment.swift */; };
+		DC3878691EBAD1B100FECE50 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3878681EBAD1B100FECE50 /* Ray.swift */; };
 		DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113901BB7487A00887A5C /* CollisionShapes.framework */; };
 		DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */; };
 		DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		DC0302321D1EFD7700EB6A6C /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		DC0302341D1F1EC700EB6A6C /* LineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegment.swift; sourceTree = "<group>"; };
+		DC3878681EBAD1B100FECE50 /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		DC8113901BB7487A00887A5C /* CollisionShapes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollisionShapes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8113951BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollisionShapesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				DC8113AD1BB7488F00887A5C /* CollisionShapeProtocol.swift */,
 				DC8113AE1BB7488F00887A5C /* CollisionTriangle.swift */,
 				DC0302341D1F1EC700EB6A6C /* LineSegment.swift */,
+				DC3878681EBAD1B100FECE50 /* Ray.swift */,
 				DC0302321D1EFD7700EB6A6C /* Transform.swift */,
 				DC8113951BB7487A00887A5C /* Info.plist */,
 			);
@@ -297,6 +300,7 @@
 				DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */,
 				DCD3BAC21C06A52200730528 /* CollisionRectangle+Positioning.swift in Sources */,
 				DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */,
+				DC3878691EBAD1B100FECE50 /* Ray.swift in Sources */,
 				DC9F27591E80590500B2B17C /* CollisionResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,8 +13,8 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6FBE41BF-87E0-4BC4-8514-820FBE69B263",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "BE4D2D50881A2E62C3A41DC9B288DEE482092ED3" : "Gravity\/",
-    "4A90A722C0D5BCE93BAF9E2494386311BDFB5DB8" : "Refactored%20Dependencies\/CoronaStructures\/",
-    "34F7D422FB3054CFBD6E34FD29953606CFFC95C8" : "Refactored%20Dependencies\/CoronaConvenience\/",
+    "4A90A722C0D5BCE93BAF9E2494386311BDFB5DB8" : "CoronaStructures\/",
+    "34F7D422FB3054CFBD6E34FD29953606CFFC95C8" : "CoronaConvenience\/",
     "AB6D654632EA0247DF9384A35319AE413E860B02" : "OmniSwift\/",
     "A760111D90904809446FCCAA6A56FCFF07F6888E" : "CollisionShapes\/"
   },

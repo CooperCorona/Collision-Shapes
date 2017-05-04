@@ -40,6 +40,13 @@ public struct LineSegment {
         
         return nil
     }
+    public var vector:CGPoint {
+        return (self.secondPoint - self.firstPoint).unit()
+    }
+    public var normal:CGPoint {
+        let vector = self.vector
+        return CGPoint(x: vector.y, y: -vector.x)
+    }
     
     public var points:[CGPoint] {
         return [self.firstPoint, self.secondPoint]
