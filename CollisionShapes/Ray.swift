@@ -85,17 +85,18 @@ public struct Ray {
             let secondDelta = line.secondPoint - self.lineSegment.firstPoint
             let firstDot = firstDelta.y / self.vector.y
             let secondDot = secondDelta.y / self.vector.y
+            let normal = CGPoint(x: 1.0, y: 0.0)
 //            return firstDelta.y / self.vector.y > 0.0 || secondDelta.y / self.vector.y > 0.0
             if firstDot > 0.0 && secondDot > 0.0 {
                 if firstDot < secondDot {
-                    return RaycastResult(ray: self, collisionPoint: line.firstPoint, normal: CGPoint(x: 1.0, y: 0.0), shape: from)
+                    return RaycastResult(ray: self, collisionPoint: line.firstPoint, normal: self.adjust(normal: normal), shape: from)
                 } else {
-                    return RaycastResult(ray: self, collisionPoint: line.secondPoint, normal: CGPoint(x: 1.0, y: 0.0), shape: from)
+                    return RaycastResult(ray: self, collisionPoint: line.secondPoint, normal: self.adjust(normal: normal), shape: from)
                 }
             } else if firstDot > 0.0 {
-                return RaycastResult(ray: self, collisionPoint: line.firstPoint, normal: CGPoint(x: 1.0, y: 0.0), shape: from)
+                return RaycastResult(ray: self, collisionPoint: line.firstPoint, normal: self.adjust(normal: normal), shape: from)
             } else if secondDot > 0.0 {
-                return RaycastResult(ray: self, collisionPoint: line.secondPoint, normal: CGPoint(x: 1.0, y: 0.0), shape: from)
+                return RaycastResult(ray: self, collisionPoint: line.secondPoint, normal: self.adjust(normal: normal), shape: from)
             }
             return nil
         } else if self.lineSegment.isVertical {
@@ -108,7 +109,7 @@ public struct Ray {
                 return nil
             }
             if (point.y - self.lineSegment.firstPoint.y) / self.vector.y > 0.0 {
-                return RaycastResult(ray: self, collisionPoint: point, normal: lineSegment.normal, shape: from)
+                return RaycastResult(ray: self, collisionPoint: point, normal: self.adjust(normal: line.normal), shape: from)
             } else {
                 return nil
             }
@@ -120,7 +121,11 @@ public struct Ray {
             }
             if y.isBetween(line.firstPoint.y, and: line.secondPoint.y) {
                 let point = CGPoint(x: line.firstPoint.x, y: y)
-                return RaycastResult(ray: self, collisionPoint: point, normal: line.normal, shape: from)
+                if (point - self.lineSegment.firstPoint).dot(self.vector) > 0.0 {
+                    return RaycastResult(ray: self, collisionPoint: point, normal: self.adjust(normal: line.normal), shape: from)
+                } else {
+                    return nil
+                }
             } else {
                 return nil
             }
@@ -140,12 +145,28 @@ public struct Ray {
         guard (point - self.lineSegment.firstPoint).dot(self.vector) > 0.0 else {
             return nil
         }
-//        if line.frame.contains(point) {
         if point.x.isBetween(line.frame.minX, and: line.frame.maxX) && point.y.isBetween(line.frame.minY, and: line.frame.maxY) {
             let length = point.distanceFrom(self.lineSegment.firstPoint)
-            return RaycastResult(ray: self, collisionPoint: point, length: length, normal: line.normal, shape: from)
+            return RaycastResult(ray: self, collisionPoint: point, length: length, normal: self.adjust(normal: line.normal), shape: from)
         } else {
             return nil
+        }
+    }
+    
+    ///There are actual 2 normal vectors for each line.
+    ///The correct one is based on which direction the
+    ///ray is going (and thus which direction it can
+    ///collide with the line on).
+    private func adjust(normal:CGPoint) -> CGPoint {
+        //If the dot product is positive, it means
+        //the ray and the normal are pointing in
+        //the same direction, which means the normal
+        //is somehow going to the other side of the
+        //line. That means it must be the wrong normal.
+        if normal.dot(self.vector) > 0.0 {
+            return -normal
+        } else {
+            return normal
         }
     }
     
