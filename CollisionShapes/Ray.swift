@@ -44,14 +44,14 @@ public struct Ray {
     public let lineSegment:LineSegment
     public let vector:CGPoint
     
-    public init(start:CGPoint, through:CGPoint) {
-        self.lineSegment = LineSegment(first: start, second: through)
-        self.vector = (through - start).unit()
+    public init(from:CGPoint, through:CGPoint) {
+        self.lineSegment = LineSegment(first: from, second: through)
+        self.vector = (through - from).unit()
     }
     
-    public init(start:CGPoint, direction:CGPoint) {
+    public init(from:CGPoint, direction:CGPoint) {
         self.vector = direction.unit()
-        self.lineSegment = LineSegment(first: start, second: start + vector)
+        self.lineSegment = LineSegment(first: from, second: from + vector)
     }
     
     public func raycast(shape:CollisionShape) -> RaycastResult? {
