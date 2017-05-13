@@ -261,24 +261,48 @@ public struct Ray {
         return shapes.flatMap() { self.raycast(shape: $0) } .min() { $0.length < $1.length }
     }
     
-    public func fullRaycast(maximumLength:CGFloat, maximumReflections:Int, shapes:[CollisionShape]) -> [FullRaycastResult] {
-        var length:CGFloat = 0.0
+    public func reflectingRaycast(maximumReflections:Int, shapes:[CollisionShape]) -> [SimpleRaycastResult] {
         var reflections = 0
-        var raycasts:[FullRaycastResult] = []
+        var raycasts:[SimpleRaycastResult] = []
         var ray:Ray = self
-        while length < maximumLength && reflections <= maximumReflections {
+        while reflections <= maximumReflections {
             if let result = ray.raycast(shapes: shapes) {
-                let maxLength = maximumLength - length
-                raycasts.append(FullRaycastResult(result: result).clampLength(to: maxLength))
-                length += result.length
+                raycasts.append(result)
                 ray = result.reflect()
             } else {
-                raycasts.append(FullRaycastResult(ray: ray, collisionPoint: ray.lineSegment.firstPoint, length: maximumLength - length, normal: nil, shape: nil))
                 break
             }
             reflections += 1
         }
         return raycasts
+    }
+    
+    public func fullRaycast(maximumLength:CGFloat, maximumReflections:Int, shapes:[CollisionShape]) -> [FullRaycastResult] {
+        let raycasts = self.reflectingRaycast(maximumReflections: maximumReflections, shapes: shapes)
+        var remainingLength = maximumLength
+        var clampedRaycasts:[FullRaycastResult] = []
+        var i = -1
+        for raycast in raycasts {
+            i += 1
+            clampedRaycasts.append(FullRaycastResult(result: raycast).clampLength(to: remainingLength))
+            remainingLength -= raycast.length
+            if remainingLength <= 0.0 {
+                return clampedRaycasts
+            }
+        }
+        guard let last = raycasts.objectAtIndex(i) else {
+            return clampedRaycasts
+        }
+        //It's possible there's some remaining length
+        //left after the last simple raycast has succeeded.
+        //If so, we know that there's no shape it will collide
+        //with (or else there would be another SimpleRaycastResult),
+        //so we just take the reflection and extend it to
+        //the remaining length.
+        let reflection = last.reflect()
+        let end = reflection.lineSegment.firstPoint + remainingLength * reflection.vector
+        clampedRaycasts.append(FullRaycastResult(ray: reflection, collisionPoint: end, length: remainingLength, normal: nil, shape: nil))
+        return clampedRaycasts
     }
     
 }
