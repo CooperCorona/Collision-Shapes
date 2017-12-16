@@ -47,6 +47,9 @@ public struct LineSegment {
         let vector = self.vector
         return CGPoint(x: vector.y, y: -vector.x)
     }
+    public var length:CGFloat {
+        return self.firstPoint.distanceFrom(self.secondPoint)
+    }
     
     public var points:[CGPoint] {
         return [self.firstPoint, self.secondPoint]
@@ -73,7 +76,7 @@ public struct LineSegment {
             lines.append(LineSegment(first: p, second: points[i + 1]))
         }
         if let first = points.first, let last = points.last , !(first ~= last) {
-            lines.append(LineSegment(first: first, second: last))
+            lines.append(LineSegment(first: last, second: first))
         }
         return lines
     }

@@ -10,8 +10,6 @@
 		DC0302331D1EFD7700EB6A6C /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302321D1EFD7700EB6A6C /* Transform.swift */; };
 		DC0302351D1F1EC700EB6A6C /* LineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0302341D1F1EC700EB6A6C /* LineSegment.swift */; };
 		DC3878691EBAD1B100FECE50 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3878681EBAD1B100FECE50 /* Ray.swift */; };
-		DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8113901BB7487A00887A5C /* CollisionShapes.framework */; };
-		DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */; };
 		DC8113AF1BB7488F00887A5C /* CollisionEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */; };
 		DC8113B01BB7488F00887A5C /* CollisionLineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AB1BB7488F00887A5C /* CollisionLineSegment.swift */; };
 		DC8113B11BB7488F00887A5C /* CollisionRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */; };
@@ -25,12 +23,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DC81139C1BB7487A00887A5C /* PBXContainerItemProxy */ = {
+		DC6DF1F11F9F8A8C00D0C302 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DC8113871BB7487A00887A5C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC81138F1BB7487A00887A5C;
-			remoteInfo = CollisionShapes;
+			containerPortal = DC8F51A21DE2658900CCCC2F /* CoronaConvenience.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC6B68CA1EB59E7700B0FF92;
+			remoteInfo = CoronaConvenience.Tests;
+		};
+		DC6DF1F51F9F8A8C00D0C302 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC8F51A81DE2658E00CCCC2F /* CoronaStructures.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC66C0D51F43C9AB0097AB9C;
+			remoteInfo = "CoronaStructures-Tests";
 		};
 		DC8F51A61DE2658900CCCC2F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -54,9 +59,6 @@
 		DC3878681EBAD1B100FECE50 /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		DC8113901BB7487A00887A5C /* CollisionShapes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollisionShapes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8113951BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollisionShapesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionShapesTests.swift; sourceTree = "<group>"; };
-		DC8113A11BB7487A00887A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC8113AA1BB7488F00887A5C /* CollisionEllipse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionEllipse.swift; sourceTree = "<group>"; };
 		DC8113AB1BB7488F00887A5C /* CollisionLineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionLineSegment.swift; sourceTree = "<group>"; };
 		DC8113AC1BB7488F00887A5C /* CollisionRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionRectangle.swift; sourceTree = "<group>"; };
@@ -79,14 +81,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC8113971BB7487A00887A5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC81139B1BB7487A00887A5C /* CollisionShapes.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,7 +90,6 @@
 				DC8F51A21DE2658900CCCC2F /* CoronaConvenience.xcodeproj */,
 				DC8F51A81DE2658E00CCCC2F /* CoronaStructures.xcodeproj */,
 				DC8113921BB7487A00887A5C /* CollisionShapes */,
-				DC81139E1BB7487A00887A5C /* CollisionShapesTests */,
 				DC8113911BB7487A00887A5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				DC8113901BB7487A00887A5C /* CollisionShapes.framework */,
-				DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,19 +121,11 @@
 			path = CollisionShapes;
 			sourceTree = "<group>";
 		};
-		DC81139E1BB7487A00887A5C /* CollisionShapesTests */ = {
-			isa = PBXGroup;
-			children = (
-				DC81139F1BB7487A00887A5C /* CollisionShapesTests.swift */,
-				DC8113A11BB7487A00887A5C /* Info.plist */,
-			);
-			path = CollisionShapesTests;
-			sourceTree = "<group>";
-		};
 		DC8F51A31DE2658900CCCC2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				DC8F51A71DE2658900CCCC2F /* CoronaConvenience.framework */,
+				DC6DF1F21F9F8A8C00D0C302 /* CoronaConvenience.Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8F51AD1DE2658E00CCCC2F /* CoronaStructures.framework */,
+				DC6DF1F61F9F8A8C00D0C302 /* CoronaStructures-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,24 +170,6 @@
 			productReference = DC8113901BB7487A00887A5C /* CollisionShapes.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DC8113991BB7487A00887A5C /* CollisionShapesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DC8113A71BB7487A00887A5C /* Build configuration list for PBXNativeTarget "CollisionShapesTests" */;
-			buildPhases = (
-				DC8113961BB7487A00887A5C /* Sources */,
-				DC8113971BB7487A00887A5C /* Frameworks */,
-				DC8113981BB7487A00887A5C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DC81139D1BB7487A00887A5C /* PBXTargetDependency */,
-			);
-			name = CollisionShapesTests;
-			productName = CollisionShapesTests;
-			productReference = DC81139A1BB7487A00887A5C /* CollisionShapesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,17 +177,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Cooper Knaak";
 				TargetAttributes = {
 					DC81138F1BB7487A00887A5C = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
-					};
-					DC8113991BB7487A00887A5C = {
-						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = ULGC99Z6NQ;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0920;
 					};
 				};
 			};
@@ -247,12 +209,25 @@
 			projectRoot = "";
 			targets = (
 				DC81138F1BB7487A00887A5C /* CollisionShapes */,
-				DC8113991BB7487A00887A5C /* CollisionShapesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		DC6DF1F21F9F8A8C00D0C302 /* CoronaConvenience.Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CoronaConvenience.Tests.xctest;
+			remoteRef = DC6DF1F11F9F8A8C00D0C302 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DC6DF1F61F9F8A8C00D0C302 /* CoronaStructures-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CoronaStructures-Tests.xctest";
+			remoteRef = DC6DF1F51F9F8A8C00D0C302 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		DC8F51A71DE2658900CCCC2F /* CoronaConvenience.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -271,13 +246,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		DC81138E1BB7487A00887A5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC8113981BB7487A00887A5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,23 +273,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC8113961BB7487A00887A5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC8113A01BB7487A00887A5C /* CollisionShapesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DC81139D1BB7487A00887A5C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC81138F1BB7487A00887A5C /* CollisionShapes */;
-			targetProxy = DC81139C1BB7487A00887A5C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DC8113A21BB7487A00887A5C /* Debug */ = {
@@ -332,14 +284,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -382,14 +340,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -432,12 +396,14 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "Corona-Corporation.CollisionShapes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
@@ -456,38 +422,14 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "Corona-Corporation.CollisionShapes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				SWIFT_VERSION = 3.0;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
-			};
-			name = Release;
-		};
-		DC8113A81BB7487A00887A5C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timothy Knaak (77VM5N6CC3)";
-				DEVELOPMENT_TEAM = ULGC99Z6NQ;
-				INFOPLIST_FILE = CollisionShapesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Corona-Corporation.CollisionShapesTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		DC8113A91BB7487A00887A5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timothy Knaak (77VM5N6CC3)";
-				DEVELOPMENT_TEAM = ULGC99Z6NQ;
-				INFOPLIST_FILE = CollisionShapesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Corona-Corporation.CollisionShapesTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -508,15 +450,6 @@
 			buildConfigurations = (
 				DC8113A51BB7487A00887A5C /* Debug */,
 				DC8113A61BB7487A00887A5C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DC8113A71BB7487A00887A5C /* Build configuration list for PBXNativeTarget "CollisionShapesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DC8113A81BB7487A00887A5C /* Debug */,
-				DC8113A91BB7487A00887A5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

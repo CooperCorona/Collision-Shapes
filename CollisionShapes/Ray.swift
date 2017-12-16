@@ -7,6 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
+    import UIKit
+#else
+    import Cocoa
+#endif
 import CoronaConvenience
 import CoronaStructures
 
@@ -168,6 +173,9 @@ public struct Ray {
         
     private func collidesWith(line:LineSegment, from:CollisionShape) -> SimpleRaycastResult? {
         if self.lineSegment.isVertical && line.isVertical {
+            guard abs(self.lineSegment.firstPoint.x - line.firstPoint.x) < Ray.epsilon else {
+                return nil
+            }
             let firstDelta = line.firstPoint - self.lineSegment.firstPoint
             let secondDelta = line.secondPoint - self.lineSegment.firstPoint
             let firstDot = firstDelta.y / self.vector.y
@@ -289,6 +297,14 @@ public struct Ray {
             if remainingLength <= 0.0 {
                 return clampedRaycasts
             }
+        }
+        //It's possible to have remaining length despite running
+        //out of reflections, so we need to exit early in this case
+        //(on top of violating the method's specification, it causes
+        //the final raycast to ignore actual shapes, because it is
+        //assumed that there can be no shapes left).
+        guard raycasts.count < maximumReflections else {
+            return clampedRaycasts
         }
         guard let last = raycasts.objectAtIndex(i) else {
             return clampedRaycasts

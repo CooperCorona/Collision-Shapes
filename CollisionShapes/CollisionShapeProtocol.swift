@@ -58,8 +58,10 @@ extension CollisionShape {
         let i1 = t1.inverse()
         let i2 = t2.inverse()
         
-        let selfPoints  = self.points.map() { i2 * (t1 * $0) }
-        let shapePoints = shape.points.map() { i1 * (t2 * $0) }
+        //The matrix times point multiplication '*' is being considered ambiguous for
+        //some reason, but casting them to their values fixes this.
+        let selfPoints  = self.points.map() { (point:CGPoint) in i1 * (t1 * point) }
+        let shapePoints = shape.points.map() { (point:CGPoint) in i1 * (t2 * point) }
         for point in selfPoints {
             if shape.pointLiesInside(point) {
                 return CollisionResult(firstShape: self, secondShape: shape, collisionPoint: point).transform(by: t2)

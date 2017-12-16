@@ -98,7 +98,7 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     public mutating func regeneratePoints() {
         self.points = []
         for i in 0..<self.triangleCount {
-            let angle = (i /% self.triangleCount) * 2.0 * CGFloat(M_PI)
+            let angle = (i /% self.triangleCount) * 2.0 * CGFloat.pi
             let point = self.pointForAngle(angle)
             
             self.points.append(point)
