@@ -1,18 +1,5 @@
-//
-//  CollisionResult.swift
-//  CollisionShapes
-//
-//  Created by Cooper Knaak on 3/20/17.
-//  Copyright © 2017 Cooper Knaak. All rights reserved.
-//
 
-import Foundation
-#if os(iOS)
-import UIKit
-#else
-import Cocoa
-#endif
-import CoronaStructures
+import CoronaMath
 
 public struct CollisionResult {
     
@@ -50,10 +37,11 @@ public struct CollisionResult {
      ```collisionPoint``` is that point. Otherwise, it's
      the point at which the line segments of the two shapes collided.
      */
-    public let collisionPoint:CGPoint
+    public let collisionPoint:Point
     
-    internal func transform(by transform:SCMatrix4) -> CollisionResult {
-        return CollisionResult(firstShape: self.firstShape, secondShape: self.secondShape, collisionPoint: transform * self.collisionPoint)
+    internal func transform(by transform:Matrix3) -> CollisionResult {
+        let collisionPoint = transform * Vector3(components: self.collisionPoint.components)
+        return CollisionResult(firstShape: self.firstShape, secondShape: self.secondShape, collisionPoint: Point(components:  collisionPoint.components))
     }
     
 }

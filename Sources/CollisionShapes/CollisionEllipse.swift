@@ -1,10 +1,6 @@
 
-#if os(iOS)
-import UIKit
-#else
-import Cocoa
-#endif
-import CoronaConvenience
+import Foundation
+import CoronaMath
 
 public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     
@@ -12,32 +8,32 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     
     public var transform = Transform() {
         didSet {
-            if !(self.transform.contentSize ~= oldValue.contentSize) {
+            if !(self.transform.size ~= oldValue.size) {
                 self.regeneratePoints()
             }
         }
     }
     
-    public var a:CGFloat { return self.contentSize.width / 2.0 }
-    public var b:CGFloat { return self.contentSize.height / 2.0 }
-    public var e:CGFloat {
+    public var a:Double { return self.size.width / 2.0 }
+    public var b:Double { return self.size.height / 2.0 }
+    public var e:Double {
         if self.a > self.b {
             return sqrt(1.0 - (self.b * self.b) / (self.a * self.a))
         } else {
             return sqrt(1.0 - (self.a * self.a) / (self.b * self.b))
         }
     }
-    public var focii:[CGPoint] {
-        let offset:CGPoint
+    public var focii:[Point] {
+        let offset:Point
         if self.a > self.b {
-            offset = CGPoint(x: self.a * self.e)
+            offset = Point(x: self.a * self.e)
         } else {
-            offset = CGPoint(y: self.b * self.e)
+            offset = Point(y: self.b * self.e)
         }
-        return [self.contentSize.center + offset, self.contentSize.center - offset]
+        return [self.size.center + offset, self.size.center - offset]
     }
     
-    public var description:String { return "CollisionEllipse (\(self.center), \(self.contentSize))" }
+    public var description:String { return "CollisionEllipse (\(self.center), \(self.size))" }
     
     // MARK: - CollisionShape Properties
     
@@ -50,56 +46,56 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     public var children:[CollisionShape] = []
     public var boxType = CollisionBoxType.both
 
-    public fileprivate(set) var points:[CGPoint] = []
+    public fileprivate(set) var points:[Point] = []
     
     // MARK: - Setup
     
-    public init(size:CGSize) {
-        self.contentSize = size
+    public init(size:Size) {
+        self.size = size
         self.regeneratePoints()
     }
     
-    public init(radius:CGFloat) {
-        self.contentSize = CGSize(square: 2.0 * radius)
+    public init(radius:Double) {
+        self.size = Size(square: 2.0 * radius)
         self.regeneratePoints()
     }
     
-    public init(center:CGPoint, size:CGSize) {
+    public init(center:Point, size:Size) {
         self.center = center
-        self.contentSize = size
+        self.size = size
         self.regeneratePoints()
     }
     
-    public init(center:CGPoint, radius:CGFloat) {
+    public init(center:Point, radius:Double) {
         self.center = center
-        self.contentSize = CGSize(square: 2.0 * radius)
+        self.size = Size(square: 2.0 * radius)
         self.regeneratePoints()
     }
     
-    public init(a:CGFloat, b:CGFloat) {
-        self.init(size: 2.0 * CGSize(width: a, height: b))
+    public init(a:Double, b:Double) {
+        self.init(size: 2.0 * Size(width: a, height: b))
     }
     
-    public init(center:CGPoint, a:CGFloat, b:CGFloat) {
-        self.init(center: center, size: 2.0 * CGSize(width: a, height: b))
+    public init(center:Point, a:Double, b:Double) {
+        self.init(center: center, size: 2.0 * Size(width: a, height: b))
     }
     
     // MARK: - Logic
     
-    public func pointForAngle(_ angle:CGFloat) -> CGPoint {
+    public func pointFor(angle:Double) -> Point {
         let cosineSquared   = cos(angle) * cos(angle)
         let sineSquared     = sin(angle) * sin(angle)
         let aSquared        = self.a * self.a
         let bSquared        = self.b * self.b
         let radius = 1.0 / sqrt(cosineSquared / aSquared + sineSquared / bSquared)
-        return self.contentSize.center + CGPoint(angle: angle, length: radius)
+        return self.size.center + Point(angle: angle, length: radius)
     }
     
     public mutating func regeneratePoints() {
         self.points = []
         for i in 0..<self.triangleCount {
-            let angle = (i /% self.triangleCount) * 2.0 * CGFloat.pi
-            let point = self.pointForAngle(angle)
+            let angle = (Double(i) / Double(self.triangleCount)) * 2.0 * Double.pi
+            let point = self.pointFor(angle: angle)
             
             self.points.append(point)
         }
@@ -108,8 +104,8 @@ public struct CollisionEllipse: CollisionShape, CustomStringConvertible {
     
     // MARK: - CollisionShape Logic
     
-    public func pointLiesInside(_ point: CGPoint) -> Bool {
-        let distance = self.focii.map() { $0.distanceFrom(point) } .reduce(0.0) { $0 + $1 }
+    public func pointLiesInside(_ point: Point) -> Bool {
+        let distance = self.focii.map() { $0.distanceFrom(vector: point) } .reduce(0.0, +)
         if self.a > self.b {
             return distance <= 2.0 * self.a
         } else {

@@ -1,34 +1,20 @@
-//
-//  Ray.swift
-//  CollisionShapes
-//
-//  Created by Cooper Knaak on 5/3/17.
-//  Copyright © 2017 Cooper Knaak. All rights reserved.
-//
-
 import Foundation
-#if os(iOS)
-    import UIKit
-#else
-    import Cocoa
-#endif
-import CoronaConvenience
-import CoronaStructures
+import CoronaMath
 
 public protocol RaycastResult {
     var ray:Ray { get }
-    var collisionPoint:CGPoint { get }
-    var length:CGFloat { get }
+    var collisionPoint:Point { get }
+    var length:Double { get }
 }
 
 public struct SimpleRaycastResult: RaycastResult {
     public let ray:Ray
-    public let collisionPoint:CGPoint
-    public let length:CGFloat
-    public let normal:CGPoint
+    public let collisionPoint:Point
+    public let length:Double
+    public let normal:Point
     public let shape:CollisionShape
     
-    public init(ray:Ray, collisionPoint:CGPoint, length:CGFloat, normal:CGPoint, shape:CollisionShape) {
+    public init(ray:Ray, collisionPoint:Point, length:Double, normal:Point, shape:CollisionShape) {
         self.ray = ray
         self.collisionPoint = collisionPoint
         self.length = length
@@ -36,8 +22,8 @@ public struct SimpleRaycastResult: RaycastResult {
         self.shape = shape
     }
     
-    public init(ray:Ray, collisionPoint:CGPoint, normal:CGPoint, shape:CollisionShape) {
-        let length = ray.lineSegment.firstPoint.distanceFrom(collisionPoint)
+    public init(ray:Ray, collisionPoint:Point, normal:Point, shape:CollisionShape) {
+        let length = ray.lineSegment.firstPoint.distanceFrom(vector: collisionPoint)
         self.init(ray: ray, collisionPoint: collisionPoint, length: length, normal: normal, shape: shape)
     }
  
@@ -69,17 +55,17 @@ public struct SimpleRaycastResult: RaycastResult {
          *  we know they're in the right angle space and can just use
          *  the sign of the delta.
          */
-        let angleToNormal = abs(acos((-self.ray.vector).unit().dot(self.normal.unit())))
+        let angleToNormal = abs(acos((-self.ray.vector).unit().dot(vector: self.normal.unit())))
         let vectorAngle = (-self.ray.vector).angle()
         let normalAngle = self.normal.angle()
         let delta = (normalAngle - vectorAngle)
-        let sign:CGFloat
+        let sign:Double
         if abs(abs(delta) - abs(angleToNormal)) < Ray.epsilon {
-            sign = delta.signOf()
+            sign = delta.sign()
         } else {
-            sign = -delta.signOf()
+            sign = -delta.sign()
         }
-        return Ray(from: self.collisionPoint, direction: CGPoint(angle: normalAngle + sign * angleToNormal))
+        return Ray(from: self.collisionPoint, direction: Point(angle: normalAngle + sign * angleToNormal))
     }
     
 }
@@ -87,12 +73,12 @@ public struct SimpleRaycastResult: RaycastResult {
 public struct FullRaycastResult: RaycastResult {
     
     public let ray:Ray
-    public let collisionPoint:CGPoint
-    public let length:CGFloat
-    public let normal:CGPoint?
+    public let collisionPoint:Point
+    public let length:Double
+    public let normal:Point?
     public let shape:CollisionShape?
     
-    public init(ray:Ray, collisionPoint:CGPoint, length:CGFloat, normal:CGPoint?, shape:CollisionShape?) {
+    public init(ray:Ray, collisionPoint:Point, length:Double, normal:Point?, shape:CollisionShape?) {
         self.ray = ray
         self.collisionPoint = collisionPoint
         self.length = length
@@ -104,7 +90,7 @@ public struct FullRaycastResult: RaycastResult {
         self.init(ray: result.ray, collisionPoint: result.collisionPoint, length: result.length, normal: result.normal, shape: result.shape)
     }
     
-    public func clampLength(to maximumLength:CGFloat) -> FullRaycastResult {
+    public func clampLength(to maximumLength:Double) -> FullRaycastResult {
         if self.length <= maximumLength {
             return self
         } else {
@@ -131,31 +117,31 @@ public struct Ray {
     ///again (with a length of about 2e-14). We
     ///need to make sure the dot product is not
     //just positive, it's positive to within a margin of error.
-    fileprivate static let epsilon:CGFloat = 0.00000001
+    fileprivate static let epsilon:Double = 0.00000001
     
     public let lineSegment:LineSegment
-    public let vector:CGPoint
+    public let vector:Point
     
-    public init(from:CGPoint, through:CGPoint) {
+    public init(from:Point, through:Point) {
         self.lineSegment = LineSegment(first: from, second: through)
         self.vector = (through - from).unit()
     }
     
-    public init(from:CGPoint, direction:CGPoint) {
+    public init(from:Point, direction:Point) {
         self.vector = direction.unit()
-        self.lineSegment = LineSegment(first: from, second: from + vector)
+        self.lineSegment = LineSegment(first: from, second: from + self.vector)
     }
     
     public func raycast(shape:CollisionShape) -> SimpleRaycastResult? {
-        return self.recursiveRaycast(shape: shape, shapeTransform: SCMatrix4())
+        return self.recursiveRaycast(shape: shape, shapeTransform: Matrix3.identity)
     }
     
-    private func recursiveRaycast(shape:CollisionShape, shapeTransform:SCMatrix4) -> SimpleRaycastResult? {
+    private func recursiveRaycast(shape:CollisionShape, shapeTransform:Matrix3) -> SimpleRaycastResult? {
         let subTransform = shape.transform.modelMatrix() * shapeTransform
         let transformedLines = LineSegment.linesBetweenPoints(shape.points).map() { LineSegment(first: subTransform * $0.firstPoint, second: subTransform * $0.secondPoint) }
-        let collision = transformedLines.flatMap() { self.collidesWith(line: $0, from: shape) } .min() { $0.length < $1.length }
+        let collision = transformedLines.compactMap() { self.collidesWith(line: $0, from: shape) } .min() { $0.length < $1.length }
         let childTransform = shape.transform.modelMatrix(false) * shapeTransform
-        let childCollision = shape.children.flatMap() { self.recursiveRaycast(shape: $0, shapeTransform: childTransform) } .min() { $0.length < $1.length }
+        let childCollision = shape.children.compactMap() { self.recursiveRaycast(shape: $0, shapeTransform: childTransform) } .min() { $0.length < $1.length }
         if let col1 = collision, let col2 = childCollision {
             if col1.length < col2.length {
                 return col1
@@ -180,7 +166,7 @@ public struct Ray {
             let secondDelta = line.secondPoint - self.lineSegment.firstPoint
             let firstDot = firstDelta.y / self.vector.y
             let secondDot = secondDelta.y / self.vector.y
-            let normal = CGPoint(x: 1.0, y: 0.0)
+            let normal = Point(x: 1.0, y: 0.0)
 
             if firstDot > Ray.epsilon && secondDot > Ray.epsilon {
                 if firstDot < secondDot {
@@ -215,8 +201,8 @@ public struct Ray {
                 return nil
             }
             if y.isBetween(line.firstPoint.y, and: line.secondPoint.y) {
-                let point = CGPoint(x: line.firstPoint.x, y: y)
-                if (point - self.lineSegment.firstPoint).dot(self.vector) > Ray.epsilon {
+                let point = Point(x: line.firstPoint.x, y: y)
+                if (point - self.lineSegment.firstPoint).dot(vector: self.vector) > Ray.epsilon {
                     return SimpleRaycastResult(ray: self, collisionPoint: point, normal: self.adjust(normal: line.normal), shape: from)
                 } else {
                     return nil
@@ -237,11 +223,11 @@ public struct Ray {
             return nil
         }
         //Must be in same direction as ray.
-        guard (point - self.lineSegment.firstPoint).dot(self.vector) > Ray.epsilon else {
+        guard (point - self.lineSegment.firstPoint).dot(vector: self.vector) > Ray.epsilon else {
             return nil
         }
         if point.x.isBetween(line.frame.minX, and: line.frame.maxX) && point.y.isBetween(line.frame.minY, and: line.frame.maxY) {
-            let length = point.distanceFrom(self.lineSegment.firstPoint)
+            let length = point.distanceFrom(vector: self.lineSegment.firstPoint)
             return SimpleRaycastResult(ray: self, collisionPoint: point, length: length, normal: self.adjust(normal: line.normal), shape: from)
         } else {
             return nil
@@ -252,13 +238,13 @@ public struct Ray {
     ///The correct one is based on which direction the
     ///ray is going (and thus which direction it can
     ///collide with the line on).
-    private func adjust(normal:CGPoint) -> CGPoint {
+    private func adjust(normal:Point) -> Point {
         //If the dot product is positive, it means
         //the ray and the normal are pointing in
         //the same direction, which means the normal
         //is somehow going to the other side of the
         //line. That means it must be the wrong normal.
-        if normal.dot(self.vector) > 0.0 {
+        if normal.dot(vector: self.vector) > 0.0 {
             return -normal
         } else {
             return normal
@@ -266,7 +252,7 @@ public struct Ray {
     }
     
     public func raycast(shapes:[CollisionShape]) -> SimpleRaycastResult? {
-        return shapes.flatMap() { self.raycast(shape: $0) } .min() { $0.length < $1.length }
+        return shapes.compactMap() { self.raycast(shape: $0) } .min() { $0.length < $1.length }
     }
     
     public func reflectingRaycast(maximumReflections:Int, shapes:[CollisionShape]) -> [SimpleRaycastResult] {
@@ -285,13 +271,11 @@ public struct Ray {
         return raycasts
     }
     
-    public func fullRaycast(maximumLength:CGFloat, maximumReflections:Int, shapes:[CollisionShape]) -> [FullRaycastResult] {
+    public func fullRaycast(maximumLength:Double, maximumReflections:Int, shapes:[CollisionShape]) -> [FullRaycastResult] {
         let raycasts = self.reflectingRaycast(maximumReflections: maximumReflections, shapes: shapes)
         var remainingLength = maximumLength
         var clampedRaycasts:[FullRaycastResult] = []
-        var i = -1
         for raycast in raycasts {
-            i += 1
             clampedRaycasts.append(FullRaycastResult(result: raycast).clampLength(to: remainingLength))
             remainingLength -= raycast.length
             if remainingLength <= 0.0 {
@@ -306,7 +290,7 @@ public struct Ray {
         guard raycasts.count < maximumReflections else {
             return clampedRaycasts
         }
-        guard let last = raycasts.objectAtIndex(i) else {
+        guard let last = raycasts.last else {
             return clampedRaycasts
         }
         //It's possible there's some remaining length

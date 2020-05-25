@@ -1,17 +1,12 @@
 
-#if os(iOS)
-    import UIKit
-#else
-    import Cocoa
-#endif
-import CoronaConvenience
+import CoronaMath
 
 public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
     
     // MARK: - Properties
     
-    fileprivate(set) public var points:[CGPoint] = [CGPoint.zero, CGPoint.zero, CGPoint.zero]
-    public var firstPoint:CGPoint {
+    fileprivate(set) public var points:[Point] = [Point.zero, Point.zero, Point.zero]
+    public var firstPoint:Point {
         get {
             return self.points[0]
         }
@@ -19,7 +14,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
             self.points[0] = newValue
         }
     }
-    public var secondPoint:CGPoint {
+    public var secondPoint:Point {
         get {
             return self.points[1]
         }
@@ -27,7 +22,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
             self.points[1] = newValue
         }
     }
-    public var thirdPoint:CGPoint {
+    public var thirdPoint:Point {
         get {
             return self.points[2]
         }
@@ -35,19 +30,19 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
             self.points[2] = newValue
         }
     }
-    public var center:CGPoint {
+    public var center:Point {
         get {
-            return self.points.reduce(CGPoint.zero) { $0 + $1 } / 3.0
+            return self.points.reduce(Point.zero) { $0 + $1 } / 3.0
         }
     }
     // MARK: - CollisionShape Properties
     
-    public var frame:CGRect {
+    public var frame:Rect {
         var minX = self.firstPoint.x
         var maxX = self.firstPoint.x
         var minY = self.firstPoint.y
         var maxY = self.firstPoint.y
-        for (_, point) in self.points.enumerateRange(1..<3) {
+        for point in self.points[1..<3] {
             if point.x < minX {
                 minX = point.x
             } else if point.x > maxX {
@@ -60,7 +55,7 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
             }
         }
         
-        return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+        return Rect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
     }
     
     public var boxType = CollisionBoxType.both
@@ -76,28 +71,28 @@ public struct CollisionTriangle: CollisionShape, CustomStringConvertible {
         
     }
     
-    public init(firstPoint:CGPoint, secondPoint:CGPoint, thirdPoint:CGPoint) {
+    public init(firstPoint:Point, secondPoint:Point, thirdPoint:Point) {
         let points = [firstPoint, secondPoint, thirdPoint]
-        let frame = CGRect(points: points)
+        let frame = Rect.containing(points: points)
         self.points = points.map() { $0 - frame.origin }
         self.transform.position = frame.origin
-        self.transform.contentSize = frame.size
+        self.transform.size = frame.size
     }
     
-    public init(x1:CGFloat, y1:CGFloat, x2:CGFloat, y2:CGFloat, x3:CGFloat, y3:CGFloat) {
-        self.init(firstPoint: CGPoint(x: x1, y: y1), secondPoint: CGPoint(x: x2, y: y2), thirdPoint: CGPoint(x: x3, y: y3))
+    public init(x1:Double, y1:Double, x2:Double, y2:Double, x3:Double, y3:Double) {
+        self.init(firstPoint: Point(x: x1, y: y1), secondPoint: Point(x: x2, y: y2), thirdPoint: Point(x: x3, y: y3))
     }
     
-    public init?(array:[CGFloat]) {
+    public init?(array:[Double]) {
         guard array.count >= 6 else {
             return nil
         }
-        self.init(firstPoint: CGPoint(x: array[0], y: array[1]), secondPoint: CGPoint(x: array[2], y: array[3]), thirdPoint: CGPoint(x: array[4], y: array[5]))
+        self.init(firstPoint: Point(x: array[0], y: array[1]), secondPoint: Point(x: array[2], y: array[3]), thirdPoint: Point(x: array[4], y: array[5]))
     }
     
     // MARK: - Logic
     
-    public func pointLiesInside(_ point:CGPoint) -> Bool {
+    public func pointLiesInside(_ point:Point) -> Bool {
         
         for line in LineSegment.linesBetweenPoints(self.points) {
             if line.pointLiesAbove(self.center) != line.pointLiesAbove(point) {
