@@ -43,5 +43,12 @@ public struct CollisionResult {
         let collisionPoint = transform * Vector3(components: self.collisionPoint.components)
         return CollisionResult(firstShape: self.firstShape, secondShape: self.secondShape, collisionPoint: Point(components:  collisionPoint.components))
     }
+
+    /**
+     Returns a `CollisionResult` with the first and second shapes flipped.
+     */
+    public func flipped() -> CollisionResult {
+        return CollisionResult(firstShape: self.secondShape, secondShape: self.firstShape, collisionPoint: self.collisionPoint)
+    }
     
 }
