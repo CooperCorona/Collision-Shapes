@@ -54,7 +54,7 @@ extension CollisionShape {
         
         //The matrix times point multiplication '*' is being considered ambiguous for
         //some reason, but casting them to their values fixes this.
-        let selfPoints  = self.points.map() { (point:Point) in i1 * (t1 * point) }
+        let selfPoints  = self.points.map() { (point:Point) in i2 * (t1 * point) }
         let shapePoints = shape.points.map() { (point:Point) in i1 * (t2 * point) }
         for point in selfPoints {
             if shape.pointLiesInside(point) {
