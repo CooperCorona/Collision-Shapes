@@ -47,8 +47,8 @@ extension CollisionShape {
     
     fileprivate func recursiveCollidesWith(selfTransform:Matrix3, shape:CollisionShape, shapeTransform:Matrix3) -> CollisionResult? {
         
-        let t1 = (self.transform.modelMatrix() * selfTransform)
-        let t2 = (shape.transform.modelMatrix() * shapeTransform)
+        let t1 = (selfTransform * self.transform.modelMatrix())
+        let t2 = (shapeTransform * shape.transform.modelMatrix())
         let i1 = t1.inverse()
         let i2 = t2.inverse()
         
