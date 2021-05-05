@@ -10,7 +10,7 @@ let package = Package(
             targets: ["CollisionShapes"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/CooperCorona/CoronaMath.git", .branch("Number"))
+        .package(url: "https://github.com/CooperCorona/CoronaMath.git", from: "2.0.0")
     ],
     targets: [
         .target(
