@@ -2,3 +2,4 @@ build/*
 .build/*
 CollisionShapes.xcodeproj
 CollisionShapes.xcodeproj/*
+CollisionShapes.xcodeproj
