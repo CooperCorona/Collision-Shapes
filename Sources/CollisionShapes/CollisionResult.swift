@@ -38,6 +38,12 @@ public struct CollisionResult {
      the point at which the line segments of the two shapes collided.
      */
     public let collisionPoint:Point
+
+    public init(firstShape:CollisionShape, secondShape:CollisionShape, collisionPoint:Point) {
+        self.firstShape = firstShape
+        self.secondShape = secondShape
+        self.collisionPoint = collisionPoint
+    }
     
     internal func transform(by transform:Matrix3) -> CollisionResult {
         let collisionPoint = transform * Vector3(components: self.collisionPoint.components)

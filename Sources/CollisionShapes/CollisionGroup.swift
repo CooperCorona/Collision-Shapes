@@ -86,5 +86,14 @@ public struct CollisionGroup: CollisionShape, ExpressibleByArrayLiteral {
             self.collisionFrame(child, matrix: childModel, minX: &minX, minY: &minY, maxX: &maxX, maxY: &maxY)
         }
     }
+
+    /// Determines if any of the shapes in `self` collide with any of the shapes in `group`. Fails early
+    /// if `collisionFrame` does not collide with `group.collisionFrame`.
+    public func collides(with group:CollisionGroup) -> CollisionResult? {
+        guard self.collisionFrame.intersects(rect: group.collisionFrame) else {
+            return nil
+        }
+        return self.collidesWithShape(group)
+    }
     
 }

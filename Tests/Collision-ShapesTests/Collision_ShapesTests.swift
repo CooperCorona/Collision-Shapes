@@ -1,12 +1,12 @@
 import XCTest
-@testable import Collision_Shapes
+@testable import CollisionShapes
 
-final class Collision_ShapesTests: XCTestCase {
+final class CollisionShapesTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(Collision_Shapes().text, "Hello, World!")
+        XCTAssert(true)
     }
 
     static var allTests = [
